@@ -1,0 +1,14 @@
+{
+  "docs": {
+    "ESSENTIAL": ["intro",
+                  "git",
+                  "tmux",
+                  "vim",
+                  "zsh"],
+    "OPTIONAL": ["doc2"],
+    "SPECIAL": ["doc3"]
+  },
+  "docs-other": {
+    "First Category": ["exampledoc4", "exampledoc5"]
+  }
+}
