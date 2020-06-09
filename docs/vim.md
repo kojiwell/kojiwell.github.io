@@ -34,17 +34,21 @@ sidebar_label: Vim
 
 **Basic editing**
 
-- `a` -- Append after cursor
-- `i` -- Insert before cursor
-- `o` -- Open new line below
-- `O` -- Open new line above
-- `u` -- Undo
-- `Ctrl` + `r` -- Redo
+- `a` -- Append after cursor - [ Normal Mode => Insert Mode ]
+- `i` -- Insert before cursor - [ N => I ]
+- `o` -- Open new line below - [ N => I ]
+- `O` -- Open new line above - [ N => I ]
+- `u` -- Undo - [ N ]
+- `Ctrl` + `r` -- Redo - [ N ]
+- `D` or `d$` -- Delete from cursor to the end - [ N ]
+- `d0` or `d^` -- Delete from cursor to the beginning - [ N ]
+- `dw` -- Delete one word from top of the word - [ N ]
+- `db` -- Delete one word from bottom of the word - [ N ]
 
 **Optional editing**
 
-- `Ctrl`+`u` -- Delete from cursor to the beginning
-- `:r file` -- Insert `file` after current line
+- `Ctrl`+`u` -- Delete from cursor to the beginning - [ Insert Mode ]
+- `:r file` -- Insert `file` after current line - [ Command Mode ]
 
 ## Opening, closing and saving files
 
