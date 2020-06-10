@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Vim - Text Editor · kojiwell</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Navigation"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Vim - Text Editor · kojiwell"/><meta property="og:type" content="website"/><meta property="og:url" content="https://kojiwell.github.io/"/><meta property="og:description" content="## Navigation"/><meta property="og:image" content="https://kojiwell.github.io/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://kojiwell.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://kojiwell.github.io/blog/atom.xml" title="kojiwell Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://kojiwell.github.io/blog/feed.xml" title="kojiwell Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/campfire.svg" alt="kojiwell"/><h2 class="headerTitleWithLogo">kojiwell</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/intro" target="_self">Notes</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>ESSENTIAL</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ESSENTIAL<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/intro">Intro</a></li><li class="navListItem"><a class="navItem" href="/docs/git">Git</a></li><li class="navListItem"><a class="navItem" href="/docs/tmux">tmux</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/vim">Vim</a></li><li class="navListItem"><a class="navItem" href="/docs/zsh">zsh</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">OPTIONAL<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/doc2">document number 2</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">SPECIAL<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/doc3">This is document number 3</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Vim - Text Editor</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="navigation"></a><a href="#navigation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Navigation</h2>
+<h3><a class="anchor" aria-hidden="true" id="basic-navigation"></a><a href="#basic-navigation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Basic navigation</h3>
+<ul>
+<li><code>h</code> -- Move left</li>
+<li><code>j</code> -- Move down</li>
+<li><code>k</code> -- Move up</li>
+<li><code>l</code> -- Move right</li>
+<li><code>Ctrl</code> + <code>d</code> -- Scroll down</li>
+<li><code>Ctrl</code> + <code>u</code> -- Scrole up</li>
+<li><code>H</code> -- Move to the top line on screen</li>
+<li><code>M</code> -- Move to the middle line on screen</li>
+<li><code>L</code> -- Move to Bottom line on screen</li>
+<li><code>gg</code> -- Move to the first line of the file</li>
+<li><code>G</code> -- Move to the last line of the file</li>
+<li><code>:20</code>,<code>20G</code>, or <code>20gg</code> -- Move to the line 20 of the file</li>
+<li><code>0</code> or <code>^</code> -- Move to the beginning of current line, then remain normal mode</li>
+<li><code>$</code> -- Move to the end of current line, then remain normal mode</li>
+<li><code>I</code> -- Move to the beginning of current line, then enter insert mode</li>
+<li><code>A</code> -- Move to the end of current line, then enter insert mode</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="optional-navigation"></a><a href="#optional-navigation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Optional navigation</h3>
+<ul>
+<li><code>10h</code> -- Move left 10 characters</li>
+<li><code>10j</code> -- Move down 10 lines</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="editing"></a><a href="#editing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Editing</h2>
+<p><strong>Basic editing</strong></p>
+<ul>
+<li><code>a</code> -- Append after cursor - [ Normal Mode =&gt; Insert Mode ]</li>
+<li><code>i</code> -- Insert before cursor - [ N =&gt; I ]</li>
+<li><code>o</code> -- Open new line below - [ N =&gt; I ]</li>
+<li><code>O</code> -- Open new line above - [ N =&gt; I ]</li>
+<li><code>u</code> -- Undo - [ N ]</li>
+<li><code>Ctrl</code> + <code>r</code> -- Redo - [ N ]</li>
+<li><code>D</code> or <code>d$</code> -- Delete from cursor to the end - [ N ]</li>
+<li><code>d0</code> or <code>d^</code> -- Delete from cursor to the beginning - [ N ]</li>
+<li><code>dw</code> -- Delete one word from top of the word - [ N ]</li>
+<li><code>db</code> -- Delete one word from bottom of the word - [ N ]</li>
+</ul>
+<p><strong>Optional editing</strong></p>
+<ul>
+<li><code>Ctrl</code>+<code>u</code> -- Delete from cursor to the beginning - [ Insert Mode ]</li>
+<li><code>:r file</code> -- Insert <code>file</code> after current line - [ Command Mode ]</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="opening-closing-and-saving-files"></a><a href="#opening-closing-and-saving-files" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Opening, closing and saving files</h2>
+<h3><a class="anchor" aria-hidden="true" id="basics"></a><a href="#basics" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Basics</h3>
+<ul>
+<li><code>:w</code> -- Save the current file</li>
+<li><code>:wq</code> -- Save the current file and close it</li>
+<li><code>:w</code> newname -- Save the current file as 'newname' but continue editing the original file</li>
+<li><code>:sav newname</code> -- Save the current file as 'newname' and start editing the 'newname' file</li>
+<li><code>:q!</code> -- Close a file without saving</li>
+<li><code>:e filename</code> Opens a file in the current buffer</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="optional"></a><a href="#optional" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Optional</h3>
+<ul>
+<li><code>ZZ</code> -- Same as <code>:wq</code></li>
+<li><code>:x</code> -- Write any changes to the file and close the file</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="mode-switching"></a><a href="#mode-switching" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mode switching</h2>
+<ul>
+<li><code>i</code> -- Enter insert mode</li>
+<li><code>:</code> -- Enter command mode</li>
+<li><code>R</code> -- Enter replace mode</li>
+<li><code>v</code> -- Enter visual mode (highlighting)</li>
+<li><code>V</code> -- Enter visual line mode (highlighting lines)</li>
+<li><code>Esc</code> -- Return to normal mode from insert or replace mode</li>
+<li><code>Esc</code>+<code>Esc</code> -- Return to normal mode from command or visual mode</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="vim-plugin"></a><a href="#vim-plugin" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Vim Plugin</h2>
+<h3><a class="anchor" aria-hidden="true" id="vim-plug"></a><a href="#vim-plug" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Vim-plug</h3>
+<p>Install vim-plug:</p>
+<pre><code class="hljs">curl -fLo ~/.<span class="hljs-keyword">vim</span>/autoload/plug.<span class="hljs-keyword">vim</span> --create-dirs \
+    http<span class="hljs-variable">s:</span>//raw.githubusercontent.<span class="hljs-keyword">com</span>/junegunn/<span class="hljs-keyword">vim</span>-plug/master/plug.<span class="hljs-keyword">vim</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="tips"></a><a href="#tips" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tips</h2>
+<h3><a class="anchor" aria-hidden="true" id="install-vim-from-source"></a><a href="#install-vim-from-source" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install Vim from source</h3>
+<pre><code class="hljs"><span class="hljs-meta">$</span><span class="bash"> apt update</span>
+<span class="hljs-meta">$</span><span class="bash"> apt install -y git build-essential libncurses-dev</span>
+<span class="hljs-meta">$</span><span class="bash"> git <span class="hljs-built_in">clone</span> https://github.com/vim/vim.git</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> vim</span>
+<span class="hljs-meta">$</span><span class="bash"> ./configure --prefix=/usr/<span class="hljs-built_in">local</span></span>
+<span class="hljs-meta">$</span><span class="bash"> make</span>
+<span class="hljs-meta">$</span><span class="bash"> make install</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/tmux"><span class="arrow-prev">← </span><span>tmux</span></a><a class="docs-next button" href="/docs/zsh"><span>zsh</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#navigation">Navigation</a><ul class="toc-headings"><li><a href="#basic-navigation">Basic navigation</a></li><li><a href="#optional-navigation">Optional navigation</a></li></ul></li><li><a href="#editing">Editing</a></li><li><a href="#opening-closing-and-saving-files">Opening, closing and saving files</a><ul class="toc-headings"><li><a href="#basics">Basics</a></li><li><a href="#optional">Optional</a></li></ul></li><li><a href="#mode-switching">Mode switching</a></li><li><a href="#vim-plugin">Vim Plugin</a><ul class="toc-headings"><li><a href="#vim-plug">Vim-plug</a></li></ul></li><li><a href="#tips">Tips</a><ul class="toc-headings"><li><a href="#install-vim-from-source">Install Vim from source</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="kojiwell" width="66" height="58"/></a><div><h5>Notes</h5><a href="/docs/en/git.html">git</a><a href="/docs/en/vim.html">vim</a><a href="/docs/en/tmux.html">tmux</a></div><div><h5>Social Media</h5><a href="/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/kojiwell" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/kojiwell">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © Koji Tanaka</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'a74d52adee2d3e310dcd72d7c3d98ba3',
+                indexName: 'mywebsite',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {}
+              });
+            </script></body></html>
