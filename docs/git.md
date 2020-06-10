@@ -14,19 +14,19 @@ development, you will likely use Git to work with other people.
 
 Set a name that is identified for credit when review version history
 
-``` sh
+``` text
 git config --global user.name "[Firstname Lastname]"
 ```
 
 Set an email address that will be associated with each history maker
 
-``` sh
+``` text
 git config --global user.email "[valid email]"
 ```
 
 You can also locally set a different email(e.g. work email) in a particular repo like this:
 
-``` sh
+``` text
 # Change directory to the repo
 cd /path/to/repo
 
@@ -76,38 +76,70 @@ git clone [path to a bare repository]
 
 Show modified files - both staged and unstaged
 
-``` sh
+``` text
 git status
 ```
 
 Stage a file or directory for your next commit
 
-``` sh
+``` text
 git add [file/directory]
 ```
 
 Unstage a file or directory while retaining the changes
 
-``` sh
+``` text
 git reset [file/directory]
 ```
 
 Show differences of what have been changed but not staged
 
-``` sh
+``` text
 git diff
 ```
 
 Show differences of what have been staged but not commited
 
-``` sh
+``` text
 git diff --staged
 ```
 
 Commit your staged content as a new commit snapshot
 
-``` sh
+``` text
 git commit -m "[descriptive message]"
+```
+
+### Branch and merge
+
+List branches. The current branch shows with a *
+
+``` text
+git branch
+```
+
+Create a new branch at the current commit
+
+``` text
+git branch [branch-name]
+```
+
+Swtich to another branch and check it out into your working directory
+
+``` text
+git checkout [branch]
+```
+
+Merge the specified branch's history into the current one
+
+``` text
+git merge [branch]
+```
+
+Show all commits in the current branch's history
+
+``` text
+git log
 ```
 
 ## Optional
@@ -124,9 +156,35 @@ Create a shortcut for a git command. E.g. `git glog` as `git log --graph --oneli
 > git log --graph --oneline
 ```
 
-### git commit
+## Tips
 
-The seven rules of a great Git commit message:
+### Simple way to track config files by a bare git repo
+
+Using a bare git repo with the `status.showUntrackedFiles no` option allows you to safely track the files you want to keep tracking.
+
+``` text
+> git init --bare $HOME/.myfiles
+> alias myfiles='/usr/bin/git --git-dir=$HOME/.myfiles/ --work-tree=$HOME'
+> myfiles config --local status.showUntrackedFiles no
+```
+
+And have the following in your `~.bashrc` or `~/.zshrc`:
+
+``` text
+alias myfiles='/usr/bin/git --git-dir=$HOME/.myfiles/ --work-tree=$HOME'
+```
+
+Now, you're all set.
+
+``` text
+> myfiles add .zshrc
+> myfiles commit -m "Add zshrc file"
+> myfiles push --set-upstream origin master
+```
+
+*Reference: [The best way to store your dotfiles: A bare Git repository](https://www.atlassian.com/git/tutorials/dotfiles)*
+
+### The seven rules of a great Git commit message
 
 1. Separate subject from body with a blank line
 2. Limit the subject line to 50 characters
@@ -136,32 +194,4 @@ The seven rules of a great Git commit message:
 6. Wrap the body at 72 characters
 7. Use the body to explain what and why vs. how
 
-Reference: [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)
-
-## Tips
-
-### Simple way to track config files by a bare git repo
-
-Using a bare git repo with the `status.showUntrackedFiles no` option allows you to safely track the files you want to keep tracking.
-
-```
-> git init --bare $HOME/.myfiles
-> alias myfiles='/usr/bin/git --git-dir=$HOME/.myfiles/ --work-tree=$HOME'
-> myfiles config --local status.showUntrackedFiles no
-```
-
-And have the following in your `~.bashrc` or `~/.zshrc`:
-
-```
-alias myfiles='/usr/bin/git --git-dir=$HOME/.myfiles/ --work-tree=$HOME'
-```
-
-Now, you're all set.
-
-``` sh
-> myfiles add .zshrc
-> myfiles commit -m "Add zshrc file"
-> myfiles push --set-upstream origin master
-```
-
-* Reference: [The best way to store your dotfiles: A bare Git repository](https://www.atlassian.com/git/tutorials/dotfiles)
+*Reference: [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)*
