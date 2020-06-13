@@ -142,18 +142,44 @@ Show all commits in the current branch's history
 git log
 ```
 
+### Inspect and compare
+
+Show the history of the current branch
+
+``` text
+git log
+```
+
+Show commits on branchA that are not on branchB
+
+``` text
+git log branchB..branchA
+```
+
+Show the commits that changed file
+
+``` text
+git log --follow [file]
+```
+
+Show the diff of what is in branchA that is not in branchB
+
+``` text
+git diff branchB..branchA
+```
+
 ## Optional
 
 ### git config
 
 Create a shortcut for a git command. E.g. `git glog` as `git log --graph --oneline`.
 
-```
-> git config alias.glog "log --graph --oneline"
+``` sh
+git config alias.glog "log --graph --oneline"
 
 # These two are the same now
-> git glog
-> git log --graph --oneline
+git glog
+git log --graph --oneline
 ```
 
 ## Tips

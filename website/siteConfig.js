@@ -32,11 +32,11 @@ const siteConfig = {
   // Used for publishing and more
   projectName: 'kojiwell',
   organizationName: 'kojiwell',
-  algolia: {
-    apiKey: 'a74d52adee2d3e310dcd72d7c3d98ba3',
-      indexName: 'mywebsite',
-      algoliaOptions: {} // Optional, if provided by Algolia
-    },
+  // algolia: {
+  //  apiKey: 'a74d52adee2d3e310dcd72d7c3d98ba3',
+  //    indexName: 'mywebsite',
+  //    algoliaOptions: {} // Optional, if provided by Algolia
+  //  },
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
@@ -45,7 +45,6 @@ const siteConfig = {
   headerLinks: [
     {doc: 'intro', label: 'Notes'},
     {blog: true, label: 'Blog'},
-    {search: true },
   ],
 
   // If you have users set above, you add it here:

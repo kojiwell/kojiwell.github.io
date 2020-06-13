@@ -38,48 +38,42 @@ class Footer extends React.Component {
           <div>
             <h5>Notes</h5>
             <a href={this.docUrl('git.html', this.props.language)}>
-              git
+              Git
             </a>
             <a href={this.docUrl('vim.html', this.props.language)}>
-              vim
+              Vim
             </a>
             <a href={this.docUrl('tmux.html', this.props.language)}>
-              tmux
+              Tmux
+            </a>
+            <a href={this.docUrl('intro.html', this.props.language)}>
+              and more...
             </a>
           </div>
            <div>
             <h5>Social Media</h5>
-            <a href={this.pageUrl('users.html', this.props.language)}>
-              User Showcase
-            </a>
-            <a
-              href="https://stackoverflow.com/questions/tagged/"
-              target="_blank"
-              rel="noreferrer noopener">
-              Stack Overflow
-            </a>
-            <a href="https://discordapp.com/">Project Chat</a>
             <a
               href="https://twitter.com/kojiwell"
               target="_blank"
               rel="noreferrer noopener">
               Twitter
             </a>
+            <a
+              href="https://qiita.com/kojiwell"
+              target="_blank"
+              rel="noreferrer noopener">
+              Qiita (Japanese)
+            </a>
           </div>
           <div>
             <h5>More</h5>
             <a href={`${this.props.config.baseUrl}blog`}>Blog</a>
-            <a href="https://github.com/kojiwell">GitHub</a>
-            <a
-              className="github-button"
-              href={this.props.config.repoUrl}
-              data-icon="octicon-star"
-              data-count-href="/facebook/docusaurus/stargazers"
-              data-show-count="true"
-              data-count-aria-label="# stargazers on GitHub"
-              aria-label="Star this project on GitHub">
-              Star
-            </a>
+            <a 
+              href="https://github.com/kojiwell"
+	      target="_blank"
+	      rel="noreferrer noopener">
+              GitHub
+              </a>
             {this.props.config.twitterUsername && (
               <div className="social">
                 <a

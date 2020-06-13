@@ -76,6 +76,12 @@ sidebar_label: Vim
 - `Esc` -- Return to normal mode from insert or replace mode
 - `Esc`+`Esc` -- Return to normal mode from command or visual mode
 
+## Search
+
+- `/word` -- Find the next occurence of 'word'
+- `/word/c` -- Find the next occurence of 'word', ignoring case
+- `:noh` or `:nohlsearch` -- Un-highlight words
+
 ## Vim Plugin
 
 ### Vim-plug
