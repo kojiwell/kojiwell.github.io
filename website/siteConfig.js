@@ -30,7 +30,7 @@ const siteConfig = {
   //   baseUrl: '/test-site/',
 
   // Used for publishing and more
-  projectName: 'kojiwell',
+  projectName: 'kojiwell.github.io',
   organizationName: 'kojiwell',
   // algolia: {
   //  apiKey: 'a74d52adee2d3e310dcd72d7c3d98ba3',
