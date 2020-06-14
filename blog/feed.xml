@@ -4,7 +4,7 @@
         <title>kojiwell Blog</title>
         <link>https://kojiwell.github.io/blog</link>
         <description>The best place to stay up-to-date with the latest kojiwell news and events.</description>
-        <lastBuildDate>Wed, 20 May 2020 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 27 Feb 2018 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -14,57 +14,11 @@
         </image>
         <copyright>Copyright © Koji Tanaka</copyright>
         <item>
-            <title><![CDATA[This Is My First Post]]></title>
-            <link>https://kojiwell.github.io/blog/2020/05/20/test.html</link>
-            <guid>https://kojiwell.github.io/blog/2020/05/20/test.html</guid>
-            <pubDate>Wed, 20 May 2020 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>I'm going to renew my website with Docusaurus.</p>  <p>Here I'm testing code block:</p> <pre><code class="hljs css language-bash">ls -la <span class="hljs-built_in">cd</span> ~/Dcuments/folder1 <span class="hljs-built_in">echo</span> <span class="hljs-string">"Hello World!"</span> </code></pre> <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-keyword">this</span> </code></pre> ]]></description>
-        </item>
-        <item>
             <title><![CDATA[Install Lustre on Multiple CentOS 7 Machines]]></title>
             <link>https://kojiwell.github.io/blog/2018/02/27/lustre-on-centos72.html</link>
             <guid>https://kojiwell.github.io/blog/2018/02/27/lustre-on-centos72.html</guid>
             <pubDate>Tue, 27 Feb 2018 06:00:00 GMT</pubDate>
             <description><![CDATA[<p><a href="http://lustre.org/">Lustre</a> is a parallel distributed file system that's often used in supercomputers. It's a high performance file system, highly scalable, and free -- available under an open source license called <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html">GPL v2</a>. If you're interested in supercomputers, Lustre w...</p>]]></description>
-        </item>
-        <item>
-            <title><![CDATA[New Version 1.0.0]]></title>
-            <link>https://kojiwell.github.io/blog/2017/10/24/new-version-1.0.0.html</link>
-            <guid>https://kojiwell.github.io/blog/2017/10/24/new-version-1.0.0.html</guid>
-            <pubDate>Tue, 24 Oct 2017 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>This blog post will test file name parsing issues when periods are present.</p> ]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Adding RSS Support]]></title>
-            <link>https://kojiwell.github.io/blog/2017/09/26/adding-rss.html</link>
-            <guid>https://kojiwell.github.io/blog/2017/09/26/adding-rss.html</guid>
-            <pubDate>Tue, 26 Sep 2017 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>This is a test post.</p> <p>A whole bunch of other information.</p> ]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Adding RSS Support - RSS Truncation Test]]></title>
-            <link>https://kojiwell.github.io/blog/2017/09/25/testing-rss.html</link>
-            <guid>https://kojiwell.github.io/blog/2017/09/25/testing-rss.html</guid>
-            <pubDate>Mon, 25 Sep 2017 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890</p>
-<p>This should be truncated.</p>
-]]></description>
-        </item>
-        <item>
-            <title><![CDATA[New Blog Post]]></title>
-            <link>https://kojiwell.github.io/blog/2017/04/10/blog-post-two.html</link>
-            <guid>https://kojiwell.github.io/blog/2017/04/10/blog-post-two.html</guid>
-            <pubDate>Mon, 10 Apr 2017 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.</p>
-]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Blog Title]]></title>
-            <link>https://kojiwell.github.io/blog/2016/03/11/blog-post.html</link>
-            <guid>https://kojiwell.github.io/blog/2016/03/11/blog-post.html</guid>
-            <pubDate>Fri, 11 Mar 2016 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.</p>
-]]></description>
         </item>
     </channel>
 </rss>
