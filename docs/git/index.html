@@ -60,29 +60,33 @@ development, you will likely use Git to work with other people.</p>
 <h2><a class="anchor" aria-hidden="true" id="basics"></a><a href="#basics" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Basics</h2>
 <h3><a class="anchor" aria-hidden="true" id="general-setup"></a><a href="#general-setup" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>General setup</h3>
 <p>Set a name that is identified for credit when review version history</p>
-<pre><code class="hljs css language-text">git config --global user.name "[Firstname Lastname]"
+<pre><code class="hljs css language-sh">git config --global user.name <span class="hljs-string">"[Firstname Lastname]"</span>
 </code></pre>
 <p>Set an email address that will be associated with each history maker</p>
-<pre><code class="hljs css language-text">git config --global user.email "[valid email]"
+<pre><code class="hljs css language-sh">git config --global user.email <span class="hljs-string">"[valid email]"</span>
 </code></pre>
+<p><strong>NOTE:</strong> The <code>--global</code> option means that the values will be shared among your local git repositories,
+and it is stored in your <code>~/.gitconfig</code> file.</p>
 <p>You can also locally set a different email(e.g. work email) in a particular repo like this:</p>
-<pre><code class="hljs css language-text"># Change directory to the repo
-cd /path/to/repo
+<pre><code class="hljs css language-sh"><span class="hljs-comment"># Change directory to the repo</span>
+<span class="hljs-built_in">cd</span> /path/to/repo
 
-# Set an email address locally
-git config --local user.email "[work email]"
-# Or, you don't actually need "--local" since the default is local
-git config user.email "[work email]"
+<span class="hljs-comment"># Set an email address locally</span>
+git config --<span class="hljs-built_in">local</span> user.email <span class="hljs-string">"[work email]"</span>
+<span class="hljs-comment"># Or, you don't actually need "--local" since the default is local</span>
+git config user.email <span class="hljs-string">"[work email]"</span>
 
-# Check the config
+<span class="hljs-comment"># Check the config</span>
 cat .git/config
 </code></pre>
-<p>By the way, the global setting is stored in your <code>~/.gitconfig</code> file.</p>
+<p>Set the editor for Git</p>
+<pre><code class="hljs css language-sh">git config --global core.editor <span class="hljs-string">"vim"</span>
+</code></pre>
 <h3><a class="anchor" aria-hidden="true" id="repository-setup"></a><a href="#repository-setup" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Repository setup</h3>
 <p>Initialize your current directory as a Git repository</p>
 <pre><code class="hljs css language-sh">git init
 </code></pre>
-<p>Initialize a shared git repository. Conventionally, repositories with the <code>--bare</code> flag
+<p>Initialize a shared Git repository. Conventionally, repositories with the <code>--bare</code> flag
 end in <code>.git</code>.</p>
 <pre><code class="hljs css language-sh">git init --bare [directory]
 
@@ -101,75 +105,101 @@ git <span class="hljs-built_in">clone</span> [path to a bare repository]
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="stage-and-snapsot"></a><a href="#stage-and-snapsot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Stage and snapsot</h3>
 <p>Show modified files - both staged and unstaged</p>
-<pre><code class="hljs css language-text">git status
+<pre><code class="hljs css language-sh">git status
 </code></pre>
 <p>Stage a file or directory for your next commit</p>
-<pre><code class="hljs css language-text">git add [file/directory]
+<pre><code class="hljs css language-sh">git add [file/directory]
 </code></pre>
 <p>Unstage a file or directory while retaining the changes</p>
-<pre><code class="hljs css language-text">git reset [file/directory]
+<pre><code class="hljs css language-sh">git reset [file/directory]
 </code></pre>
 <p>Show differences of what have been changed but not staged</p>
-<pre><code class="hljs css language-text">git diff
+<pre><code class="hljs css language-sh">git diff
 </code></pre>
 <p>Show differences of what have been staged but not commited</p>
-<pre><code class="hljs css language-text">git diff --staged
+<pre><code class="hljs css language-sh">git diff --staged
 </code></pre>
 <p>Commit your staged content as a new commit snapshot</p>
-<pre><code class="hljs css language-text">git commit -m "[descriptive message]"
+<pre><code class="hljs css language-sh">git commit -m <span class="hljs-string">"[descriptive message]"</span>
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="branch-and-merge"></a><a href="#branch-and-merge" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Branch and merge</h3>
 <p>List branches. The current branch shows with a *</p>
-<pre><code class="hljs css language-text">git branch
+<pre><code class="hljs css language-sh">git branch
 </code></pre>
 <p>Create a new branch at the current commit</p>
-<pre><code class="hljs css language-text">git branch [branch-name]
+<pre><code class="hljs css language-sh">git branch [branch-name]
 </code></pre>
 <p>Swtich to another branch and check it out into your working directory</p>
-<pre><code class="hljs css language-text">git checkout [branch]
+<pre><code class="hljs css language-sh">git checkout [branch]
 </code></pre>
 <p>Merge the specified branch's history into the current one</p>
-<pre><code class="hljs css language-text">git merge [branch]
+<pre><code class="hljs css language-sh">git merge [branch]
 </code></pre>
 <p>Show all commits in the current branch's history</p>
-<pre><code class="hljs css language-text">git log
+<pre><code class="hljs css language-sh">git <span class="hljs-built_in">log</span>
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="inspect-and-compare"></a><a href="#inspect-and-compare" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Inspect and compare</h3>
 <p>Show the history of the current branch</p>
-<pre><code class="hljs css language-text">git log
+<pre><code class="hljs css language-sh">git <span class="hljs-built_in">log</span>
 </code></pre>
 <p>Show commits on branchA that are not on branchB</p>
-<pre><code class="hljs css language-text">git log branchB..branchA
+<pre><code class="hljs css language-sh">git <span class="hljs-built_in">log</span> branchB..branchA
 </code></pre>
 <p>Show the commits that changed file</p>
-<pre><code class="hljs css language-text">git log --follow [file]
+<pre><code class="hljs css language-sh">git <span class="hljs-built_in">log</span> --follow [file]
 </code></pre>
 <p>Show the diff of what is in branchA that is not in branchB</p>
-<pre><code class="hljs css language-text">git diff branchB..branchA
+<pre><code class="hljs css language-sh">git diff branchB..branchA
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="removal-and-file-path-change"></a><a href="#removal-and-file-path-change" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Removal and file path change</h3>
+<p>Delete the file from project and stage the removal for commit</p>
+<pre><code class="hljs css language-sh">git rm [file]
+</code></pre>
+<p>Untrack the file from project and stage the removal for commit.</p>
+<pre><code class="hljs css language-sh">git rm --cached [file]
+</code></pre>
+<p><strong>NOTE:</strong> With that <code>--cached</code> option, the file won't be deleted, which will show
+up as an unstaged file in the output of <code>git status</code>. If you want it to stay there
+untracked, add it in the <code>.gitignore</code> file.</p>
+<p>Change an existing file path and stage that move</p>
+<pre><code class="hljs css language-sh">git mv [existing-path] [new-path]
+</code></pre>
+<p>Show all commit logs with indication of any paths that moved</p>
+<pre><code class="hljs css language-sh">git <span class="hljs-built_in">log</span> --<span class="hljs-built_in">stat</span> -M
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="ignoring-filesdirectories"></a><a href="#ignoring-filesdirectories" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ignoring files/directories</h3>
+<p>Create a <code>.gitignore</code> file to your repository, and list the files and directories
+that you want to ignore. Here're examples:</p>
+<pre><code class="hljs css language-text">logs/
+*.pyc
+pattern*/
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="optional"></a><a href="#optional" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Optional</h2>
 <h3><a class="anchor" aria-hidden="true" id="git-config"></a><a href="#git-config" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>git config</h3>
-<p>Create a shortcut for a git command. E.g. <code>git glog</code> as <code>git log --graph --oneline</code>.</p>
+<p>Create a shortcut for a git command. E.g. <code>git glog</code> as <code>git log --graph --oneline</code></p>
 <pre><code class="hljs css language-sh">git config alias.glog <span class="hljs-string">"log --graph --oneline"</span>
 
 <span class="hljs-comment"># These two are the same now</span>
 git glog
 git <span class="hljs-built_in">log</span> --graph --oneline
 </code></pre>
+<p>Change editor (e.g. vim)</p>
+<pre><code class="hljs css language-sh">git config --global core.editor <span class="hljs-string">"vim"</span>
+</code></pre>
 <h2><a class="anchor" aria-hidden="true" id="tips"></a><a href="#tips" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tips</h2>
 <h3><a class="anchor" aria-hidden="true" id="simple-way-to-track-config-files-by-a-bare-git-repo"></a><a href="#simple-way-to-track-config-files-by-a-bare-git-repo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Simple way to track config files by a bare git repo</h3>
 <p>Using a bare git repo with the <code>status.showUntrackedFiles no</code> option allows you to safely track the files you want to keep tracking.</p>
-<pre><code class="hljs css language-text">> git init --bare $HOME/.myfiles
-> alias myfiles='/usr/bin/git --git-dir=$HOME/.myfiles/ --work-tree=$HOME'
-> myfiles config --local status.showUntrackedFiles no
+<pre><code class="hljs css language-sh">git init --bare <span class="hljs-variable">$HOME</span>/.myfiles
+<span class="hljs-built_in">alias</span> myfiles=<span class="hljs-string">'/usr/bin/git --git-dir=$HOME/.myfiles/ --work-tree=$HOME'</span>
+myfiles config --<span class="hljs-built_in">local</span> status.showUntrackedFiles no
 </code></pre>
 <p>And have the following in your <code>~.bashrc</code> or <code>~/.zshrc</code>:</p>
-<pre><code class="hljs css language-text">alias myfiles='/usr/bin/git --git-dir=$HOME/.myfiles/ --work-tree=$HOME'
+<pre><code class="hljs css language-sh"><span class="hljs-built_in">alias</span> myfiles=<span class="hljs-string">'/usr/bin/git --git-dir=$HOME/.myfiles/ --work-tree=$HOME'</span>
 </code></pre>
 <p>Now, you're all set.</p>
-<pre><code class="hljs css language-text">> myfiles add .zshrc
-> myfiles commit -m "Add zshrc file"
-> myfiles push --set-upstream origin master
+<pre><code class="hljs css language-sh">myfiles add .zshrc
+myfiles commit -m <span class="hljs-string">"Add zshrc file"</span>
+myfiles push --<span class="hljs-built_in">set</span>-upstream origin master
 </code></pre>
 <p><em>Reference: <a href="https://www.atlassian.com/git/tutorials/dotfiles">The best way to store your dotfiles: A bare Git repository</a></em></p>
 <h3><a class="anchor" aria-hidden="true" id="the-seven-rules-of-a-great-git-commit-message"></a><a href="#the-seven-rules-of-a-great-git-commit-message" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The seven rules of a great Git commit message</h3>
@@ -183,4 +213,4 @@ git <span class="hljs-built_in">log</span> --graph --oneline
 <li>Use the body to explain what and why vs. how</li>
 </ol>
 <p><em>Reference: <a href="https://chris.beams.io/posts/git-commit/">How to Write a Git Commit Message</a></em></p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/intro"><span class="arrow-prev">← </span><span>Intro</span></a><a class="docs-next button" href="/docs/tmux"><span>tmux</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#basics">Basics</a><ul class="toc-headings"><li><a href="#general-setup">General setup</a></li><li><a href="#repository-setup">Repository setup</a></li><li><a href="#stage-and-snapsot">Stage and snapsot</a></li><li><a href="#branch-and-merge">Branch and merge</a></li><li><a href="#inspect-and-compare">Inspect and compare</a></li></ul></li><li><a href="#optional">Optional</a><ul class="toc-headings"><li><a href="#git-config">git config</a></li></ul></li><li><a href="#tips">Tips</a><ul class="toc-headings"><li><a href="#simple-way-to-track-config-files-by-a-bare-git-repo">Simple way to track config files by a bare git repo</a></li><li><a href="#the-seven-rules-of-a-great-git-commit-message">The seven rules of a great Git commit message</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="kojiwell" width="66" height="58"/></a><div><h5>Notes</h5><a href="/docs/en/git.html">Git</a><a href="/docs/en/vim.html">Vim</a><a href="/docs/en/tmux.html">Tmux</a><a href="/docs/en/intro.html">and more...</a></div><div><h5>Social Media</h5><a href="https://twitter.com/kojiwell" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://qiita.com/kojiwell" target="_blank" rel="noreferrer noopener">Qiita (Japanese)</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/kojiwell" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright">Copyright © Koji Tanaka</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/intro"><span class="arrow-prev">← </span><span>Intro</span></a><a class="docs-next button" href="/docs/tmux"><span>tmux</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#basics">Basics</a><ul class="toc-headings"><li><a href="#general-setup">General setup</a></li><li><a href="#repository-setup">Repository setup</a></li><li><a href="#stage-and-snapsot">Stage and snapsot</a></li><li><a href="#branch-and-merge">Branch and merge</a></li><li><a href="#inspect-and-compare">Inspect and compare</a></li><li><a href="#removal-and-file-path-change">Removal and file path change</a></li><li><a href="#ignoring-filesdirectories">Ignoring files/directories</a></li></ul></li><li><a href="#optional">Optional</a><ul class="toc-headings"><li><a href="#git-config">git config</a></li></ul></li><li><a href="#tips">Tips</a><ul class="toc-headings"><li><a href="#simple-way-to-track-config-files-by-a-bare-git-repo">Simple way to track config files by a bare git repo</a></li><li><a href="#the-seven-rules-of-a-great-git-commit-message">The seven rules of a great Git commit message</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="kojiwell" width="66" height="58"/></a><div><h5>Notes</h5><a href="/docs/en/git.html">Git</a><a href="/docs/en/vim.html">Vim</a><a href="/docs/en/tmux.html">Tmux</a><a href="/docs/en/intro.html">and more...</a></div><div><h5>Social Media</h5><a href="https://twitter.com/kojiwell" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://qiita.com/kojiwell" target="_blank" rel="noreferrer noopener">Qiita (Japanese)</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/kojiwell" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright">Copyright © Koji Tanaka</section></footer></div></body></html>
