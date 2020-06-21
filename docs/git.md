@@ -14,19 +14,23 @@ development, you will likely use Git to work with other people.
 
 Set a name that is identified for credit when review version history
 
-``` text
+``` sh
 git config --global user.name "[Firstname Lastname]"
 ```
 
 Set an email address that will be associated with each history maker
 
-``` text
+``` sh
 git config --global user.email "[valid email]"
 ```
 
+**NOTE:** The `--global` option means that the values will be shared among your local git repositories,
+and it is stored in your `~/.gitconfig` file.
+
+
 You can also locally set a different email(e.g. work email) in a particular repo like this:
 
-``` text
+``` sh
 # Change directory to the repo
 cd /path/to/repo
 
@@ -39,7 +43,11 @@ git config user.email "[work email]"
 cat .git/config
 ```
 
-By the way, the global setting is stored in your `~/.gitconfig` file.
+Set the editor for Git
+
+``` sh
+git config --global core.editor "vim"
+```
 
 ### Repository setup
 
@@ -49,7 +57,7 @@ Initialize your current directory as a Git repository
 git init
 ```
 
-Initialize a shared git repository. Conventionally, repositories with the `--bare` flag
+Initialize a shared Git repository. Conventionally, repositories with the `--bare` flag
 end in `.git`.
 
 ``` sh
@@ -76,37 +84,37 @@ git clone [path to a bare repository]
 
 Show modified files - both staged and unstaged
 
-``` text
+``` sh
 git status
 ```
 
 Stage a file or directory for your next commit
 
-``` text
+``` sh
 git add [file/directory]
 ```
 
 Unstage a file or directory while retaining the changes
 
-``` text
+``` sh
 git reset [file/directory]
 ```
 
 Show differences of what have been changed but not staged
 
-``` text
+``` sh
 git diff
 ```
 
 Show differences of what have been staged but not commited
 
-``` text
+``` sh
 git diff --staged
 ```
 
 Commit your staged content as a new commit snapshot
 
-``` text
+``` sh
 git commit -m "[descriptive message]"
 ```
 
@@ -114,31 +122,31 @@ git commit -m "[descriptive message]"
 
 List branches. The current branch shows with a *
 
-``` text
+``` sh
 git branch
 ```
 
 Create a new branch at the current commit
 
-``` text
+``` sh
 git branch [branch-name]
 ```
 
 Swtich to another branch and check it out into your working directory
 
-``` text
+``` sh
 git checkout [branch]
 ```
 
 Merge the specified branch's history into the current one
 
-``` text
+``` sh
 git merge [branch]
 ```
 
 Show all commits in the current branch's history
 
-``` text
+``` sh
 git log
 ```
 
@@ -146,33 +154,74 @@ git log
 
 Show the history of the current branch
 
-``` text
+``` sh
 git log
 ```
 
 Show commits on branchA that are not on branchB
 
-``` text
+``` sh
 git log branchB..branchA
 ```
 
 Show the commits that changed file
 
-``` text
+``` sh
 git log --follow [file]
 ```
 
 Show the diff of what is in branchA that is not in branchB
 
-``` text
+``` sh
 git diff branchB..branchA
+```
+
+### Removal and file path change
+
+Delete the file from project and stage the removal for commit
+
+``` sh
+git rm [file]
+```
+
+Untrack the file from project and stage the removal for commit.
+
+``` sh
+git rm --cached [file]
+```
+
+**NOTE:** With that `--cached` option, the file won't be deleted, which will show
+up as an unstaged file in the output of `git status`. If you want it to stay there 
+untracked, add it in the `.gitignore` file.
+
+Change an existing file path and stage that move
+
+``` sh
+git mv [existing-path] [new-path]
+```
+
+Show all commit logs with indication of any paths that moved
+
+``` sh
+git log --stat -M
+```
+
+### Ignoring files/directories
+
+Create a `.gitignore` file to your repository, and list the files and directories
+that you want to ignore. Here're examples:
+
+``` text
+logs/
+*.pyc
+pattern*/
 ```
 
 ## Optional
 
 ### git config
 
-Create a shortcut for a git command. E.g. `git glog` as `git log --graph --oneline`.
+Create a shortcut for a git command. E.g. `git glog` as `git log --graph --oneline`
 
 ``` sh
 git config alias.glog "log --graph --oneline"
@@ -182,30 +231,36 @@ git glog
 git log --graph --oneline
 ```
 
+Change editor (e.g. vim)
+
+``` sh
+git config --global core.editor "vim"
+```
+
 ## Tips
 
 ### Simple way to track config files by a bare git repo
 
 Using a bare git repo with the `status.showUntrackedFiles no` option allows you to safely track the files you want to keep tracking.
 
-``` text
-> git init --bare $HOME/.myfiles
-> alias myfiles='/usr/bin/git --git-dir=$HOME/.myfiles/ --work-tree=$HOME'
-> myfiles config --local status.showUntrackedFiles no
+``` sh
+git init --bare $HOME/.myfiles
+alias myfiles='/usr/bin/git --git-dir=$HOME/.myfiles/ --work-tree=$HOME'
+myfiles config --local status.showUntrackedFiles no
 ```
 
 And have the following in your `~.bashrc` or `~/.zshrc`:
 
-``` text
+``` sh
 alias myfiles='/usr/bin/git --git-dir=$HOME/.myfiles/ --work-tree=$HOME'
 ```
 
 Now, you're all set.
 
-``` text
-> myfiles add .zshrc
-> myfiles commit -m "Add zshrc file"
-> myfiles push --set-upstream origin master
+``` sh
+myfiles add .zshrc
+myfiles commit -m "Add zshrc file"
+myfiles push --set-upstream origin master
 ```
 
 *Reference: [The best way to store your dotfiles: A bare Git repository](https://www.atlassian.com/git/tutorials/dotfiles)*
