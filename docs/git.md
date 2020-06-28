@@ -265,6 +265,15 @@ myfiles push --set-upstream origin master
 
 *Reference: [The best way to store your dotfiles: A bare Git repository](https://www.atlassian.com/git/tutorials/dotfiles)*
 
+### Create an empty branch
+
+``` sh
+git checkout --orphan [empty-branch]
+git rm -rf .
+git commit --allow-empty -m "empty commit"
+git push origin [empty-branch]
+```
+
 ### The seven rules of a great Git commit message
 
 1. Separate subject from body with a blank line
