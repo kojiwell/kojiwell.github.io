@@ -1,6 +1,6 @@
 ---
 id: git
-title: Git - A Distributed Version Control System
+title: Git - Distributed Version Control System
 sidebar_label: Git
 ---
 
@@ -208,7 +208,7 @@ git log --stat -M
 
 ### Ignoring files/directories
 
-Create a `.gitignore` file to your repository, and list the files and directories
+Create a `.gitignore` file in your repository, and list the files and directories
 that you want to ignore. Here're examples:
 
 ``` text
@@ -216,6 +216,10 @@ logs/
 *.pyc
 pattern*/
 ```
+
+When you want to set the list of ignored files/dirs globally, create `$HOME/.config/git/ignore`,
+and list the ignored files in the file. You can find the examples of global ignores at 
+[github / gitignore](https://github.com/github/gitignore).
 
 ## Optional
 

@@ -63,7 +63,7 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle tagline={siteConfig.tagline} title={siteConfig.title} />
           <PromoSection>
-            <Button href={docUrl('intro.html')}>Notes</Button>
+            <Button href={docUrl('index.html')}>Notes</Button>
             <Button href="/blog">Blog</Button>
           </PromoSection>
         </div>
@@ -95,8 +95,8 @@ class Index extends React.Component {
         className="productShowcaseSection paddingBottom"
         style={{textAlign: 'center'}}>
         <h2>About me</h2>
-        <MarkdownBlock>Hi, my name is Koji Tanaka(@kojiwell). I use open source software(OSS) to live life in peace, 
-	    and I respect OSS developers and communities. As a system engineer, I build up (and sometimes break down, 
+        <MarkdownBlock>Hi, my name is Koji Tanaka(@kojiwell). I use open source software to live life in peace. 
+	    I like the culture of open source. I guess I want to be part of it. I build up (and sometimes break down, 
             and then rebuild) high-performance computing systems. 
 	    I also help users get the most out of the systems.
 	    When I’m not working or sleeping, I’m hanging out with my family or friends, reading a book, running, or freediving. 

@@ -1,7 +1,9 @@
 {
+  "readme": {
+    "README": ["index"]
+  },
   "docs": {
-    "ESSENTIAL": ["intro",
-                  "git",
+    "ESSENTIAL": ["git",
                   "tmux",
                   "vim",
                   "zsh"],

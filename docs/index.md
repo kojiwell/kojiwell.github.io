@@ -1,7 +1,7 @@
 ---
-id: intro
-title: Intro - About These Notes
-sidebar_label: Intro
+id: index
+title: Index
+sidebar_label: Index
 ---
 
 These are my notes about the tools I use. I add notes here and there as I learn so that I feel okay about forgetting them.
