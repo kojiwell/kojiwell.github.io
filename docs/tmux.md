@@ -8,28 +8,48 @@ sidebar_label: Tmux
 
 Start a new Tmux session
 
-```
-tmux new -s [session-name]
+``` text
+$ tmux new -s [session-name]
 ```
 
 Detach from a Tmux session
 
-```
-Ctrl+b, d
-```
+`Ctrl`+`b`, `d`
+
 
 List Tmux sessions
 
-```
-tmux ls
+``` text
+$ tmux ls
 ```
 
 Attach a Tmux session
 
-```
+``` text
 tmux a -t [session-name]
+
+# Detach any other clients and attach the session
+tmux a -dt [session-name]
 ```
 
+Create a new window
+
+`Ctrl`+`b`, `c`
+
+Split a window or a pane into two panes
+
+* vertically: `Ctrl`+`b`, `%`
+* horizontally: `Ctrl`+`b`, `"`
+
+Show the list of windows
+
+``` text
+Ctrl+b, w
+```
+
+Rename a window
+
+`Ctrl`+`b`, `,`
 
 ## References
 
