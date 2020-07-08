@@ -16,7 +16,6 @@
         <summary type="html"><![CDATA[<p><a href="http://lustre.org/">Lustre</a> is a parallel distributed file system that's often used in supercomputers. It's a high performance file system, highly scalable, and free -- available under an open source license called <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html">GPL v2</a>. If you're interested in supercomputers, Lustre w...</p>]]></summary>
         <author>
             <name>Koji Tanaka</name>
-            <email/>
             <uri>http://twitter.com/kojiwell</uri>
         </author>
     </entry>
