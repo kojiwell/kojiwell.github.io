@@ -7,7 +7,7 @@
                   "tmux",
                   "vim",
                   "zsh"],
-    "OPTIONAL": ["doc2"],
+    "OPTIONAL": ["docusaurus"],
     "SPECIAL": ["conman",
                 "slurm"]
   },
