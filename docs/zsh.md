@@ -1,7 +1,7 @@
 ---
 id: zsh
-title: zsh
-sidebar_label: zsh
+title: Zsh
+sidebar_label: Zsh
 ---
 
 ## Useful options to set in your `~.zshrc`

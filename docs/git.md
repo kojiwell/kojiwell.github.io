@@ -1,12 +1,12 @@
 ---
 id: git
-title: Git - Distributed Version Control System
+title: Git - distributed version control system
 sidebar_label: Git
 ---
 
 Git allows a group of software developers to manage changes of sourse code over time. 
-It's the most popular version control system, so when you're involved in a software 
-development, you will likely use Git to work with other people.
+It's the most popular version control system, and when you're involved in a software 
+development, you will most-likely use Git with other people. 
 
 ## Basics
 
