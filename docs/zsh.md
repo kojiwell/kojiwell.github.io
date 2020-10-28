@@ -1,6 +1,6 @@
 ---
 id: zsh
-title: Zsh
+title: Zsh - extended Bourne shell
 sidebar_label: Zsh
 ---
 

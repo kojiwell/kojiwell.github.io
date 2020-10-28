@@ -1,6 +1,6 @@
 ---
 id: tmux
-title: Tmux - Terminal Multiplexer
+title: Tmux - terminal multiplexer
 sidebar_label: Tmux
 ---
 

@@ -13,3 +13,11 @@ These are my notes about the tools I use. I add notes here and there as I learn 
 - [Vim - text editor](vim.md)
 - [Zsh - Unix shell](zsh.md)
 
+## Optional tools
+
+- [Docusaurus](docusaurus.md)
+
+## Special tools
+
+- [Conman](conman.md)
+- [Slurm](slurm.md)

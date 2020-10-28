@@ -1,6 +1,6 @@
 ---
 id: vim
-title: Vim - Text Editor
+title: Vim - text editor
 sidebar_label: Vim
 ---
 
