@@ -8,7 +8,8 @@
                   "vim",
                   "zsh"],
     "OPTIONAL": ["doc2"],
-    "SPECIAL": ["doc3"]
+    "SPECIAL": ["conman",
+                "slurm"]
   },
   "docs-other": {
     "First Category": ["exampledoc4", "exampledoc5"]
