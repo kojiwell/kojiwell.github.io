@@ -71,6 +71,7 @@ setopt +o nomatch
 ```
 # Color can be set by something like this
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
+#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
 
 # Ctrl + Space to accept the current suggestion
 bindkey '^ ' autosuggest-accept

@@ -3,11 +3,12 @@
     "README": ["index"]
   },
   "docs": {
-    "ESSENTIAL": ["git",
+    "ESSENTIAL": ["bash",
+	          "git",
                   "tmux",
-                  "vim",
-                  "zsh"],
-    "OPTIONAL": ["docusaurus"],
+                  "vim"],
+    "OPTIONAL": ["zsh",
+	         "docusaurus"],
     "SPECIAL": ["conman",
                 "slurm"]
   },
