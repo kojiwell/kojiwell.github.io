@@ -93,6 +93,28 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
+### NERDTree and NERDTree Tabs -- a file system explorer and tabs
+
+Add these two plugins in the vim-plug:
+
+```
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+```
+
+My basic config for them:
+
+```
+" Toggle NERDTree by Ctrl + \
+map <C-\> <plug>NERDTreeTabsToggle<CR>
+
+" Open NERDTree at starting vim
+let g:nerdtree_tabs_open_on_console_startup=1
+
+" Show hidden files
+let NERDTreeShowHidden=1
+```
+
 ## Tips
 
 ### Install Vim from source
