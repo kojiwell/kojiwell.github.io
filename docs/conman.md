@@ -72,15 +72,34 @@ ExecStart=/opt/conman/sbin/conmand -c /opt/conman/etc/conman.conf
 WantedBy=multi-user.target
 ```
 
-## Setup remote access to serial console (CentOS 8)
+## Setup remote access to serial console CentOS/Redhat
 
-On `/etc/sysconfig/grub` file, add `console=tty0 console=ttyS0,115200n8` to `GRUB_CMDLINE_LINUX`, and execute this command
+On the `/etc/sysconfig/grub`, add `console=tty0 console=ttyS0,115200n8` to `GRUB_CMDLINE_LINUX` like this:
 
 ```
+--- /etc/sysconfig/grub 2020-12-08 10:32:54.784876819 +0900
++++ /etc/sysconfig/grub.orig    2020-12-08 09:44:09.023170789 +0900
+@@ -3,6 +3,6 @@
+ GRUB_DEFAULT=saved
+ GRUB_DISABLE_SUBMENU=true
+ GRUB_TERMINAL_OUTPUT="console"
+-GRUB_CMDLINE_LINUX="crashkernel=auto resume=UUID=dce8618b-f6e2-4a6d-be51-62a1d1dec0ef console=tty0 console=ttyS0,115200n8"
++GRUB_CMDLINE_LINUX="crashkernel=auto resume=UUID=dce8618b-f6e2-4a6d-be51-62a1d1dec0ef rhgb quiet"
+ GRUB_DISABLE_RECOVERY="true"
+ GRUB_ENABLE_BLSCFG=true
+```
+
+Apply the change (and reboot after this command):
+
+```
+# Backup grub.cfg
+cp /boot/efi/EFI/centos/grub.cfg{,.orig}
+
+# CentOS
+grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+# Redhat
 grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
 ```
-
-And then, reboot the system
 
 Test it
 
@@ -89,7 +108,7 @@ Test it
 ipmitool -H host1-mg -I lanplus -U <user> -P <password> sol activate | tee -a console_log.txt
 
 # By conman's ipmitool.exp
-/opt/conman-0.3.0/lib/conman/exec/ipmitool.exp deigo-login1-mg.oist.jp <user> <password>
+/opt/conman-0.3.0/lib/conman/exec/ipmitool.exp host1-mg.oist.jp <user> <password>
 ```
 
 ## References
