@@ -12,6 +12,12 @@ Use vi keybindings
 bindkey -v
 ```
 
+Use emacs keybindings
+
+```
+bindkey -e
+```
+
 Bind `Up` and `Down` keys to history search
 
 ```
