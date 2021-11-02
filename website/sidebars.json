@@ -5,6 +5,7 @@
   "docs": {
     "ESSENTIAL": ["bash",
 	          "git",
+		  "linux",
                   "tmux",
                   "vim"],
     "OPTIONAL": ["zsh",
