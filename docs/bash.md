@@ -32,3 +32,16 @@ Bash is the default shell of most Linux distros.
 - `Alt` + `p` -- Search backward through the history starting at the current line
 - `Alt` + `n` -- Search forward through the history starting at the current line
 - `Ctrl` + `r` -- Open the history search
+
+## Tips
+
+### History search with arrow keys
+
+You can enable arrow keys -- [Up] for backward and [Down] for forward -- 
+for history search by these commands (You can put them in your `.bashrc`.)
+
+```
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+```
+
