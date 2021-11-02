@@ -56,10 +56,11 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Linux</h1></header><article><div><span><p>Linux is a Unix-based operating system. It's free and open source, and the most widely-used operating system.
 Linux inherits the Unix philosophy(minimalist, modular software development) - &quot;do one thing do it well.&quot;</p>
-<h2><a class="anchor" aria-hidden="true" id="find"></a><a href="#find" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>find</h2>
+<hr>
 <p>Find files owned by user <code>foo:gfoo</code> and change the owner to <code>bar:gbar</code></p>
 <pre><code class="hljs">find /path/to/dir -<span class="hljs-keyword">user</span> <span class="hljs-title">foo</span> -exec chown -h bar:gbar {} \;
 </code></pre>
+<hr>
 <p>List only directories</p>
 <pre><code class="hljs">find $HOME -maxdepth <span class="hljs-number">1</span> -type d |tail -n +<span class="hljs-number">2</span> |cut -d <span class="hljs-string">'/'</span> -f <span class="hljs-number">3</span><span class="hljs-number">-4</span>
 </code></pre>
@@ -69,4 +70,22 @@ Avoid recursive search, which is the default action of the find command.</li>
 <li><code>tail -n +2</code>: List from the 2nd line. The first line is the current directory, which is the $HOME itself</li>
 <li><code>cut -d '/' -f 3-4</code>: Cut the line by '', and print from 3rd to 4th</li>
 </ul>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/git"><span class="arrow-prev">← </span><span>Git</span></a><a class="docs-next button" href="/docs/tmux"><span>Tmux</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#find">find</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="kojiwell" width="66" height="58"/></a><div><h5>Notes</h5><a href="/docs/git.html">Git</a><a href="/docs/vim.html">Vim</a><a href="/docs/tmux.html">Tmux</a><a href="/docs/intro.html">and more...</a></div><div><h5>Social Media</h5><a href="https://twitter.com/kojiwell" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://qiita.com/kojiwell" target="_blank" rel="noreferrer noopener">Qiita (Japanese)</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/kojiwell" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright">Copyright © Koji Tanaka</section></footer></div></body></html>
+<hr>
+<p>Replace <code>foo</code> with <code>bar</code> in a text file</p>
+<pre><code class="hljs">sed -i.bak <span class="hljs-string">'s/foo/bar/g'</span> <span class="hljs-built_in">file</span>.txt
+
+<span class="hljs-comment"># Ensure the partial words are not matched</span>
+sed -i.bak <span class="hljs-string">'s/foo\b/bar/g'</span> <span class="hljs-built_in">file</span>.txt
+</code></pre>
+<ul>
+<li><code>-i[SUFFIX]</code>: Edit file in place (make backup if SUFFIX supplied</li>
+<li><code>\b</code>: word boundary. This ensures the partial words are not matched.</li>
+</ul>
+<hr>
+<p>Test <code>sed</code> before edit a file to ensure the outcome</p>
+<pre><code class="hljs">echo foo <span class="hljs-built_in">bar</span> foobar |sed 's/foo/<span class="hljs-built_in">bar</span>/g'
+&gt; <span class="hljs-built_in">bar</span> <span class="hljs-built_in">bar</span> barbar
+echo foo <span class="hljs-built_in">bar</span> foobar |sed 's/foo\b/<span class="hljs-built_in">bar</span>/g'
+&gt; <span class="hljs-built_in">bar</span> <span class="hljs-built_in">bar</span> foobar
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/git"><span class="arrow-prev">← </span><span>Git</span></a><a class="docs-next button" href="/docs/tmux"><span>Tmux</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="kojiwell" width="66" height="58"/></a><div><h5>Notes</h5><a href="/docs/git.html">Git</a><a href="/docs/vim.html">Vim</a><a href="/docs/tmux.html">Tmux</a><a href="/docs/intro.html">and more...</a></div><div><h5>Social Media</h5><a href="https://twitter.com/kojiwell" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://qiita.com/kojiwell" target="_blank" rel="noreferrer noopener">Qiita (Japanese)</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/kojiwell" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright">Copyright © Koji Tanaka</section></footer></div></body></html>
