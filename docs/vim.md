@@ -44,6 +44,9 @@ sidebar_label: Vim
 - `d0` or `d^` -- Delete from cursor to the beginning - [ N ]
 - `dw` -- Delete one word from top of the word - [ N ]
 - `db` -- Delete one word from bottom of the word - [ N ]
+- `:%s/old/new/g` -- Replace all old with new throughout file - [ N ]
+- `:%s/old/new/gc` -- Replace all old with new throughout file with interactive confirmations - [ N ]
+
 
 **Optional editing**
 
