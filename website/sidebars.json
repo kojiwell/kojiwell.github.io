@@ -11,6 +11,7 @@
     "OPTIONAL": ["zsh",
 	         "docusaurus"],
     "SPECIAL": ["conman",
+	        "idrac",
                 "slurm"]
   },
   "docs-other": {
