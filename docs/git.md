@@ -92,6 +92,10 @@ Stage a file or directory for your next commit
 
 ``` sh
 git add [file/directory]
+
+# Patch mode
+git -p add [file/directory]
+
 ```
 
 Unstage a file or directory while retaining the changes
