@@ -10,14 +10,14 @@ Linux inherits the Unix philosophy(minimalist, modular software development) - "
 ---
 Find files owned by user `foo:gfoo` and change the owner to `bar:gbar`
 
-```
+```bash
 find /path/to/dir -user foo -exec chown -h bar:gbar {} \;
 ```
 
 ---
 List only directories
 
-```
+```bash
 find $HOME -maxdepth 1 -type d |tail -n +2 |cut -d '/' -f 3-4
 ```
 
@@ -29,11 +29,11 @@ find $HOME -maxdepth 1 -type d |tail -n +2 |cut -d '/' -f 3-4
 ---
 Replace `foo` with `bar` in a text file
 
-```
+```bash
 sed -i.bak 's/foo/bar/g' file.txt
 
 # Ensure the partial words are not matched
-sed -i.bak 's/foo\b/bar/g' file.txt
+sed -i.bak 's/\bfoo\b/bar/g' file.txt
 ```
 
 * `-i[SUFFIX]`: Edit file in place (make backup if SUFFIX supplied
@@ -42,10 +42,11 @@ sed -i.bak 's/foo\b/bar/g' file.txt
 ---
 Test `sed` before edit a file to ensure the outcome
 
-```
-echo foo bar foobar |sed 's/foo/bar/g'
-> bar bar barbar
-echo foo bar foobar |sed 's/foo\b/bar/g'
-> bar bar foobar
+```bash
+echo foo bar foobar barfoo |sed 's/foo/bar/g'                                 
+> bar bar barbar barbar
+
+echo foo bar foobar barfoo |sed 's/\bfoo\b/bar/g'
+> bar bar foobar barfoo
 ```
 
