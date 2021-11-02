@@ -58,11 +58,11 @@
 Linux inherits the Unix philosophy(minimalist, modular software development) - &quot;do one thing do it well.&quot;</p>
 <hr>
 <p>Find files owned by user <code>foo:gfoo</code> and change the owner to <code>bar:gbar</code></p>
-<pre><code class="hljs">find /path/to/dir -<span class="hljs-keyword">user</span> <span class="hljs-title">foo</span> -exec chown -h bar:gbar {} \;
+<pre><code class="hljs css language-bash">find /path/to/dir -user foo -<span class="hljs-built_in">exec</span> chown -h bar:gbar {} \;
 </code></pre>
 <hr>
 <p>List only directories</p>
-<pre><code class="hljs">find $HOME -maxdepth <span class="hljs-number">1</span> -type d |tail -n +<span class="hljs-number">2</span> |cut -d <span class="hljs-string">'/'</span> -f <span class="hljs-number">3</span><span class="hljs-number">-4</span>
+<pre><code class="hljs css language-bash">find <span class="hljs-variable">$HOME</span> -maxdepth 1 -<span class="hljs-built_in">type</span> d |tail -n +2 |cut -d <span class="hljs-string">'/'</span> -f 3-4
 </code></pre>
 <ul>
 <li><code>find $HOME -maxdepth 1 -type d</code>: Find directories in $HOME.
@@ -72,10 +72,10 @@ Avoid recursive search, which is the default action of the find command.</li>
 </ul>
 <hr>
 <p>Replace <code>foo</code> with <code>bar</code> in a text file</p>
-<pre><code class="hljs">sed -i.bak <span class="hljs-string">'s/foo/bar/g'</span> <span class="hljs-built_in">file</span>.txt
+<pre><code class="hljs css language-bash">sed -i.bak <span class="hljs-string">'s/foo/bar/g'</span> file.txt
 
 <span class="hljs-comment"># Ensure the partial words are not matched</span>
-sed -i.bak <span class="hljs-string">'s/foo\b/bar/g'</span> <span class="hljs-built_in">file</span>.txt
+sed -i.bak <span class="hljs-string">'s/\bfoo\b/bar/g'</span> file.txt
 </code></pre>
 <ul>
 <li><code>-i[SUFFIX]</code>: Edit file in place (make backup if SUFFIX supplied</li>
@@ -83,9 +83,10 @@ sed -i.bak <span class="hljs-string">'s/foo\b/bar/g'</span> <span class="hljs-bu
 </ul>
 <hr>
 <p>Test <code>sed</code> before edit a file to ensure the outcome</p>
-<pre><code class="hljs">echo foo <span class="hljs-built_in">bar</span> foobar |sed 's/foo/<span class="hljs-built_in">bar</span>/g'
-&gt; <span class="hljs-built_in">bar</span> <span class="hljs-built_in">bar</span> barbar
-echo foo <span class="hljs-built_in">bar</span> foobar |sed 's/foo\b/<span class="hljs-built_in">bar</span>/g'
-&gt; <span class="hljs-built_in">bar</span> <span class="hljs-built_in">bar</span> foobar
+<pre><code class="hljs css language-bash"><span class="hljs-built_in">echo</span> foo bar foobar barfoo |sed <span class="hljs-string">'s/foo/bar/g'</span>                                 
+&gt; bar bar barbar barbar
+
+<span class="hljs-built_in">echo</span> foo bar foobar barfoo |sed <span class="hljs-string">'s/\bfoo\b/bar/g'</span>
+&gt; bar bar foobar barfoo
 </code></pre>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/git"><span class="arrow-prev">← </span><span>Git</span></a><a class="docs-next button" href="/docs/tmux"><span>Tmux</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="kojiwell" width="66" height="58"/></a><div><h5>Notes</h5><a href="/docs/git.html">Git</a><a href="/docs/vim.html">Vim</a><a href="/docs/tmux.html">Tmux</a><a href="/docs/intro.html">and more...</a></div><div><h5>Social Media</h5><a href="https://twitter.com/kojiwell" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://qiita.com/kojiwell" target="_blank" rel="noreferrer noopener">Qiita (Japanese)</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/kojiwell" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright">Copyright © Koji Tanaka</section></footer></div></body></html>
