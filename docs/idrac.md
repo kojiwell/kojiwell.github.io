@@ -52,3 +52,18 @@ Setup a static IP on iDRAC
 ```shell
 racadm setniccfg -s <IPv4Address> <netmask> <IPv4 gateway>
 ```
+
+---
+
+Updating iDRAC or BIOS would sometimes fail. If resetting iDRAC doesn't solve the problem, you have to try force-resetting 
+jobqueue and then reset iDRAC like this:
+
+```shell
+racadm jobqueue delete -i JID_CLEARALL_FORCE
+sleep 120 # Wait for two minutes to make sure jobqueue is cleared
+racadm racreset
+sleep 300 # Wait for five minutes to ensure iDRAC is back to online
+# and then
+dsu --non-interactive --reboot
+```
+
