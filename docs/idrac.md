@@ -1,10 +1,17 @@
 ---
 id: idrac
-title: iDRAC
+title: iDRAC - integrated Dell Remote Access Controller
 sidebar_label: iDRAC
 ---
 
+The iDRAC is a device in a Dell server that allows IT administrators to manage 
+and monitor a remote and local server. It doesn't only provide a web UI but 
+also very helpful, handy CLIs.
 
+It also provides SSH public key access, which is wonderful when you manage hundreds of servers
+by a parallel shell -- such as [pdsh](https://github.com/chaos/pdsh).
+
+---
 Install racadm and omreport
 
 ```shell
@@ -15,7 +22,6 @@ dnf install -y srvadmin-omacore srvadmin-idrac
 ```
 
 ---
-
 Register a SSH public key
 
 ```shell
