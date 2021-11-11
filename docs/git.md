@@ -180,6 +180,12 @@ Show the diff of what is in branchA that is not in branchB
 git diff branchB..branchA
 ```
 
+Compare a particular file in two branches -- main and dev
+
+``` sh
+git diff main..dev -- path/to/file
+```
+
 ### Removal and file path change
 
 Delete the file from project and stage the removal for commit
@@ -246,6 +252,16 @@ git config --global core.editor "vim"
 ```
 
 ## Tips
+
+### Tell git which ssh private key to use
+
+```
+# Set it permanently in the .git/config
+git config core.sshCommand "ssh -i ~/.ssh/another_id_rsa -F /dev/null"
+
+# Just once
+git -c core.sshCommand="ssh -i ~/.ssh/another_id_rsa -F /dev/null" clone ...
+```
 
 ### Simple way to track config files by a bare git repo
 
