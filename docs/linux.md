@@ -7,7 +7,7 @@ sidebar_label: Linux
 Linux is a Unix-based operating system. It's free and open source, and the most widely-used operating system.
 Linux inherits the Unix philosophy(minimalist, modular software development) - "do one thing do it well."
 
-## Tips
+## find
 
 Find files owned by user `foo` and change the owner to `bar:group1`
 
@@ -27,7 +27,8 @@ find $HOME -maxdepth 1 -type d |tail -n +2 |cut -d '/' -f 3-4
 * `tail -n +2`: List from the 2nd line. The first line is the current directory, which is the $HOME itself
 * `cut -d '/' -f 3-4`: Cut the line by '\', and print from 3rd to 4th
 
----
+## sed
+
 Replace `foo` with `bar` in a text file
 
 ```bash
@@ -65,4 +66,50 @@ echo foo bar | sed 's/\>/_suffix/g'
 # Prefix and suffix
 echo foo bar | sed -e 's/\</prefix_/g' -e 's/\>/_suffix/g'
 > prefix_foo_suffix prefix_bar_suffix
+```
+
+---
+Delete the line that matches the key word
+
+```
+seq -f line-'%02g' 10|sed -e '/03/d' -e '/06/d'
+```
+
+## rsync
+
+Options I often use
+
+- `--archive, -a` : archive mode
+- `--verbose, -v` : increase verbosity
+- `--stats` : print a verbose set of statistics on the file transfer
+- `--link-dest=/absolute/path/to/dir` : unchanged files are hard linked from `/complete/path/to/dir` to the destination directory
+- `--update, -u` : skip files that are newer on the receiver
+- `--dry-run, -n` : perform a trial run with no changes made
+- `--one-file-system, -x` : don't cross filesystem boundaries
+- `--delete` : delete extraneous files from dest dirs
+- `--exclude=PATTERN` : exclude files matching PATTERN
+- `--exclude-from=FILE` : read exclude patterns from FILE
+- `--progress` : show progress during transfer
+- `--log-file=FILE` : override the "log file" setting
+- `--backup, -b` : make backups
+- `--backup-dir=/absolute/path/to/dir/` : make backups into hierarchy based in `/absolute/path/to/dir/`
+
+rsync examples
+
+```
+# Sync src to dest and store the differences in src.YYYY-MM-DD
+rsync -av --backup --delete --backup-dir=$PWD/src.$(date +%Y-%m-%d)/ src/ dest
+
+# Backup the system partition to /backup directory. (Exclude if /backup is on the system partition.)
+rsync -a --stats --one-file-system --exclude=/backup / /backup
+
+# Create a hard linked twin of src as src.YYYY-MM-DD
+rsync -a --link-dest=$PWD/src src/ src.$(date +%Y-%m-%d)
+
+# Rsync everything but use hard link if the file is the same as the link-dest. 
+# This saves disk space while each of src.YYYY-MM-DD is a complete backup.
+rsync -a --link-dest=$PWD/src.YYYY-MM-DD src/ src.$(date +%Y-%m-%d)
+
+# Sync only files and ignore directories
+rsync -av --exclude='/*/' src/ dest
 ```
