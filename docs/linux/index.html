@@ -56,9 +56,9 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Linux</h1></header><article><div><span><p>Linux is a Unix-based operating system. It's free and open source, and the most widely-used operating system.
 Linux inherits the Unix philosophy(minimalist, modular software development) - &quot;do one thing do it well.&quot;</p>
-<hr>
-<p>Find files owned by user <code>foo:gfoo</code> and change the owner to <code>bar:gbar</code></p>
-<pre><code class="hljs css language-bash">find /path/to/dir -user foo -<span class="hljs-built_in">exec</span> chown -h bar:gbar {} \;
+<h2><a class="anchor" aria-hidden="true" id="find"></a><a href="#find" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>find</h2>
+<p>Find files owned by user <code>foo</code> and change the owner to <code>bar:group1</code></p>
+<pre><code class="hljs css language-bash">find /path/to/dir -user foo -<span class="hljs-built_in">exec</span> chown -h bar:group1 {} \;
 </code></pre>
 <hr>
 <p>List only directories</p>
@@ -70,7 +70,7 @@ Avoid recursive search, which is the default action of the find command.</li>
 <li><code>tail -n +2</code>: List from the 2nd line. The first line is the current directory, which is the $HOME itself</li>
 <li><code>cut -d '/' -f 3-4</code>: Cut the line by '', and print from 3rd to 4th</li>
 </ul>
-<hr>
+<h2><a class="anchor" aria-hidden="true" id="sed"></a><a href="#sed" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>sed</h2>
 <p>Replace <code>foo</code> with <code>bar</code> in a text file</p>
 <pre><code class="hljs css language-bash">sed -i.bak <span class="hljs-string">'s/foo/bar/g'</span> file.txt
 
@@ -78,7 +78,7 @@ Avoid recursive search, which is the default action of the find command.</li>
 sed -i.bak <span class="hljs-string">'s/\bfoo\b/bar/g'</span> file.txt
 </code></pre>
 <ul>
-<li><code>-i[SUFFIX]</code>: Edit file in place (make backup if SUFFIX supplied</li>
+<li><code>-i[SUFFIX]</code>: Edit file in place (make backup if SUFFIX supplied)</li>
 <li><code>\b</code>: word boundary. This ensures the partial words are not matched.</li>
 </ul>
 <hr>
@@ -89,4 +89,57 @@ sed -i.bak <span class="hljs-string">'s/\bfoo\b/bar/g'</span> file.txt
 <span class="hljs-built_in">echo</span> foo bar foobar barfoo |sed <span class="hljs-string">'s/\bfoo\b/bar/g'</span>
 &gt; bar bar foobar barfoo
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/git"><span class="arrow-prev">← </span><span>Git</span></a><a class="docs-next button" href="/docs/tmux"><span>Tmux</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="kojiwell" width="66" height="58"/></a><div><h5>Notes</h5><a href="/docs/git.html">Git</a><a href="/docs/vim.html">Vim</a><a href="/docs/tmux.html">Tmux</a><a href="/docs/intro.html">and more...</a></div><div><h5>Social Media</h5><a href="https://twitter.com/kojiwell" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://qiita.com/kojiwell" target="_blank" rel="noreferrer noopener">Qiita (Japanese)</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/kojiwell" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright">Copyright © Koji Tanaka</section></footer></div></body></html>
+<hr>
+<p>Add <code>prefix_</code> and/or <code>_suffix</code> to every word  in a text</p>
+<pre><code class="hljs"><span class="hljs-comment"># Prefix</span>
+<span class="hljs-built_in">echo</span> foo bar | sed <span class="hljs-string">'s/\&lt;/prefix_/g'</span>
+&gt; prefix_foo prefix_bar
+
+<span class="hljs-comment"># Suffix</span>
+<span class="hljs-built_in">echo</span> foo bar | sed <span class="hljs-string">'s/\&gt;/_suffix/g'</span>
+&gt; foo_suffix bar_suffix
+
+<span class="hljs-comment"># Prefix and suffix</span>
+<span class="hljs-built_in">echo</span> foo bar | sed -e <span class="hljs-string">'s/\&lt;/prefix_/g'</span> -e <span class="hljs-string">'s/\&gt;/_suffix/g'</span>
+&gt; prefix_foo_suffix prefix_bar_suffix
+</code></pre>
+<hr>
+<p>Delete the line that matches the key word</p>
+<pre><code class="hljs">seq -f <span class="hljs-keyword">line</span>-<span class="hljs-string">'%02g'</span> <span class="hljs-number">10</span>|sed -e <span class="hljs-string">'/03/d'</span> -e <span class="hljs-string">'/06/d'</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="rsync"></a><a href="#rsync" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>rsync</h2>
+<p>Options I often use</p>
+<ul>
+<li><code>--archive, -a</code> : archive mode</li>
+<li><code>--verbose, -v</code> : increase verbosity</li>
+<li><code>--stats</code> : print a verbose set of statistics on the file transfer</li>
+<li><code>--link-dest=/absolute/path/to/dir</code> : unchanged files are hard linked from <code>/complete/path/to/dir</code> to the destination directory</li>
+<li><code>--update, -u</code> : skip files that are newer on the receiver</li>
+<li><code>--dry-run, -n</code> : perform a trial run with no changes made</li>
+<li><code>--one-file-system, -x</code> : don't cross filesystem boundaries</li>
+<li><code>--delete</code> : delete extraneous files from dest dirs</li>
+<li><code>--exclude=PATTERN</code> : exclude files matching PATTERN</li>
+<li><code>--exclude-from=FILE</code> : read exclude patterns from FILE</li>
+<li><code>--progress</code> : show progress during transfer</li>
+<li><code>--log-file=FILE</code> : override the &quot;log file&quot; setting</li>
+<li><code>--backup, -b</code> : make backups</li>
+<li><code>--backup-dir=/absolute/path/to/dir/</code> : make backups into hierarchy based in <code>/absolute/path/to/dir/</code></li>
+</ul>
+<p>rsync examples</p>
+<pre><code class="hljs"><span class="hljs-comment"># Sync src to dest and store the differences in src.YYYY-MM-DD</span>
+rsync -av --backup --<span class="hljs-keyword">delete</span> --backup-dir=$PWD/src.$(date +%Y-%m-%d)/ src/ dest
+
+<span class="hljs-comment"># Backup the system partition to /backup directory. (Exclude if /backup is on the system partition.)</span>
+rsync -a --stats --one-file-<span class="hljs-keyword">system</span> --exclude=<span class="hljs-regexp">/backup /</span> /backup
+
+<span class="hljs-comment"># Create a hard linked twin of src as src.YYYY-MM-DD</span>
+rsync -a --<span class="hljs-keyword">link</span>-dest=$PWD/src src/ src.$(date +%Y-%m-%d)
+
+<span class="hljs-comment"># Rsync everything but use hard link if the file is the same as the link-dest. </span>
+<span class="hljs-comment"># This saves disk space while each of src.YYYY-MM-DD is a complete backup.</span>
+rsync -a --<span class="hljs-keyword">link</span>-dest=$PWD/src.YYYY-MM-DD src/ src.$(date +%Y-%m-%d)
+
+<span class="hljs-comment"># Sync only files and ignore directories</span>
+rsync -av --exclude=<span class="hljs-string">'/*/'</span> src/ dest
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/git"><span class="arrow-prev">← </span><span>Git</span></a><a class="docs-next button" href="/docs/tmux"><span>Tmux</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#find">find</a></li><li><a href="#sed">sed</a></li><li><a href="#rsync">rsync</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="kojiwell" width="66" height="58"/></a><div><h5>Notes</h5><a href="/docs/git.html">Git</a><a href="/docs/vim.html">Vim</a><a href="/docs/tmux.html">Tmux</a><a href="/docs/intro.html">and more...</a></div><div><h5>Social Media</h5><a href="https://twitter.com/kojiwell" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://qiita.com/kojiwell" target="_blank" rel="noreferrer noopener">Qiita (Japanese)</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/kojiwell" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright">Copyright © Koji Tanaka</section></footer></div></body></html>
