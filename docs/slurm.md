@@ -7,13 +7,23 @@ sidebar_label: Slurm
 Slurm is a free and open-source job scheduler for large and small Linux clusters. It is robust, fault-tolerant, and highly scalable, used by
 many of supercomputers in the world.
 
-## Notes
+## Unsorted notes
 
 ---
-List drain/draining/down nodes with the reasons
+List drained/draining/down nodes with the reasons
 
 ``` sh
 sinfo -R -o "%n %E"
+```
+
+List down and drained nodes and run something via pdsh
+
+```
+# Put the list in DNODES variable
+DNODES=$(sinfo -R -t drained,down -o "%n" -h |sort |awk '{print $1}' ORS=","|sed 's/.$//')
+
+# e.g. Check nodes by testinfra
+pdsh -w $DNODES py.test -v test_myinfra.py
 ```
 
 ---
