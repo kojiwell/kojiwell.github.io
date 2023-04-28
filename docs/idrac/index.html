@@ -61,14 +61,20 @@ also very helpful, handy CLIs.</p>
 by a parallel shell -- such as <a href="https://github.com/chaos/pdsh">pdsh</a>.</p>
 <hr>
 <p>Install racadm and omreport</p>
-<pre><code class="hljs css language-shell">dnf install -y srvadmin-omacore srvadmin-idrac
-    /opt/dell/srvadmin/sbin/srvadmin-services.sh start
-    /opt/dell/srvadmin/sbin/srvadmin-services.sh enable
-    /opt/dell/srvadmin/sbin/omreport system
+<pre><code class="hljs css language-sh"><span class="hljs-comment"># Install</span>
+dnf install -y srvadmin-omacore srvadmin-idrac
+
+<span class="hljs-comment"># Start and enable srvadmin-services</span>
+/opt/dell/srvadmin/sbin/srvadmin-services.sh start
+/opt/dell/srvadmin/sbin/srvadmin-services.sh <span class="hljs-built_in">enable</span>
+
+<span class="hljs-comment"># Check it</span>
+/opt/dell/srvadmin/sbin/omreport system
 </code></pre>
 <hr>
 <p>Register a SSH public key</p>
-<pre><code class="hljs css language-shell">racadm -r &lt;ip/hostname&gt; -u &lt;user&gt; -p &lt;password&gt; sshpkauth -i &lt;number&gt; -k &lt;number&gt; -t "$(cat ~/.ssh/id_rsa.pub)"
+<pre><code class="hljs css language-sh">racadm -r &lt;ip/hostname&gt; -u &lt;user&gt; -p &lt;password&gt; \
+    sshpkauth -i &lt;number&gt; -k &lt;number&gt; -t <span class="hljs-string">"<span class="hljs-variable">$(cat ~/.ssh/id_rsa.pub)</span>"</span>
 </code></pre>
 <ul>
 <li><code>-i &lt;number&gt;</code> : User ID. root is 2</li>
@@ -95,11 +101,31 @@ dsu --non-interactive --import-public-key --reboot
 <hr>
 <p>Updating iDRAC or BIOS would sometimes fail. If resetting iDRAC doesn't solve the problem, you have to try force-resetting
 jobqueue and then reset iDRAC like this:</p>
-<pre><code class="hljs css language-shell">racadm jobqueue delete -i JID_CLEARALL_FORCE
-sleep 120 # Wait for two minutes to make sure jobqueue is cleared
+<pre><code class="hljs css language-sh">racadm jobqueue delete -i JID_CLEARALL_FORCE
+sleep 120 <span class="hljs-comment"># Wait for two minutes to make sure jobqueue is cleared</span>
 racadm racreset
-sleep 300 # Wait for five minutes to ensure iDRAC is back to online
-<span class="hljs-meta">#</span><span class="bash"> and <span class="hljs-keyword">then</span></span>
+sleep 300 <span class="hljs-comment"># Wait for five minutes to ensure iDRAC is back to online</span>
+<span class="hljs-comment"># and then</span>
 dsu --non-interactive --reboot
 </code></pre>
+<hr>
+<p>Generate the SupportAssist log by CLI</p>
+<pre><code class="hljs css language-sh">racadm -r &lt;ip/host&gt; -u &lt;user&gt; -p &lt;password&gt; supportassist accepteula
+racadm -r &lt;ip/host&gt; -u &lt;user&gt; -p &lt;password&gt; supportassist collect -f &lt;filename&gt;.zip
+</code></pre>
+<hr>
+<p>Set up the next boot with PXE and reboot (locally)</p>
+<pre><code class="hljs css language-sh">racadm <span class="hljs-built_in">set</span> iDRAC.ServerBoot.BootOnce Enabled
+racadm <span class="hljs-built_in">set</span> iDRAC.ServerBoot.FirstBootDevice PXE
+reboot
+</code></pre>
+<hr>
+<p>Use serial console via iDRAC</p>
+<pre><code class="hljs">ssh root@&lt;ip/hostname of iDRAC&gt;
+racadm&gt;&gt;<span class="hljs-built_in"> console </span>com2
+</code></pre>
+<ul>
+<li>To exit, <code>Ctrl</code> + <code>\</code></li>
+<li>To enable the serial console on CentOS 8, add <code>console=tty0 console=ttyS0,115200n8</code> to <code>GRUB_CMDLINE_LINUX</code> in <code>/etc/sysconfig/grub</code></li>
+</ul>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/conman"><span class="arrow-prev">← </span><span>Conman</span></a><a class="docs-next button" href="/docs/slurm"><span>Slurm</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="kojiwell" width="66" height="58"/></a><div><h5>Notes</h5><a href="/docs/git.html">Git</a><a href="/docs/vim.html">Vim</a><a href="/docs/tmux.html">Tmux</a><a href="/docs/intro.html">and more...</a></div><div><h5>Social Media</h5><a href="https://twitter.com/kojiwell" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://qiita.com/kojiwell" target="_blank" rel="noreferrer noopener">Qiita (Japanese)</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/kojiwell" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright">Copyright © Koji Tanaka</section></footer></div></body></html>
