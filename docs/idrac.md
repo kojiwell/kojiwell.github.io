@@ -14,18 +14,24 @@ by a parallel shell -- such as [pdsh](https://github.com/chaos/pdsh).
 ---
 Install racadm and omreport
 
-```shell
+``` sh
+# Install
 dnf install -y srvadmin-omacore srvadmin-idrac
-    /opt/dell/srvadmin/sbin/srvadmin-services.sh start
-    /opt/dell/srvadmin/sbin/srvadmin-services.sh enable
-    /opt/dell/srvadmin/sbin/omreport system
+
+# Start and enable srvadmin-services
+/opt/dell/srvadmin/sbin/srvadmin-services.sh start
+/opt/dell/srvadmin/sbin/srvadmin-services.sh enable
+
+# Check it
+/opt/dell/srvadmin/sbin/omreport system
 ```
 
 ---
 Register a SSH public key
 
-```shell
-racadm -r <ip/hostname> -u <user> -p <password> sshpkauth -i <number> -k <number> -t "$(cat ~/.ssh/id_rsa.pub)"
+``` sh
+racadm -r <ip/hostname> -u <user> -p <password> \
+    sshpkauth -i <number> -k <number> -t "$(cat ~/.ssh/id_rsa.pub)"
 ```
 
 * `-i <number>` : User ID. root is 2
@@ -64,7 +70,7 @@ racadm setniccfg -s <IPv4Address> <netmask> <IPv4 gateway>
 Updating iDRAC or BIOS would sometimes fail. If resetting iDRAC doesn't solve the problem, you have to try force-resetting 
 jobqueue and then reset iDRAC like this:
 
-```shell
+``` sh
 racadm jobqueue delete -i JID_CLEARALL_FORCE
 sleep 120 # Wait for two minutes to make sure jobqueue is cleared
 racadm racreset
@@ -73,3 +79,29 @@ sleep 300 # Wait for five minutes to ensure iDRAC is back to online
 dsu --non-interactive --reboot
 ```
 
+---
+Generate the SupportAssist log by CLI
+
+``` sh
+racadm -r <ip/host> -u <user> -p <password> supportassist accepteula
+racadm -r <ip/host> -u <user> -p <password> supportassist collect -f <filename>.zip
+```
+
+---
+Set up the next boot with PXE and reboot (locally)
+
+``` sh
+racadm set iDRAC.ServerBoot.BootOnce Enabled
+racadm set iDRAC.ServerBoot.FirstBootDevice PXE
+reboot
+```
+
+---
+Use serial console via iDRAC
+
+```
+ssh root@<ip/hostname of iDRAC>
+racadm>> console com2
+```
+- To exit, `Ctrl` + `\`
+- To enable the serial console on CentOS 8, add `console=tty0 console=ttyS0,115200n8` to `GRUB_CMDLINE_LINUX` in `/etc/sysconfig/grub`
