@@ -4,6 +4,9 @@ title: Slurm
 sidebar_label: Slurm
 ---
 
+Slurm is a free and open-source job scheduler for large and small Linux clusters. It is robust, fault-tolerant, and highly scalable, used by
+many of supercomputers in the world.
+
 ## Notes
 
 ---
