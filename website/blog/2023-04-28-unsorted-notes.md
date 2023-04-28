@@ -56,6 +56,17 @@ cat .git/config
 export GIT_SSH_COMMAND="ssh -i /path/to/new-key"
 ```
 
+## rsync
+
+Check differences between two directories by the `--dry-run, -n` option
+
+```
+rsync -av --dry-run /path/to/dir_a/ /path/to/dir_b
+
+# -n is the same (if you got used to the short expression)
+rsync -avn /path/to/dir_a/ /path/to/dir_b
+```
+
 ## sed
 
 Remove the last comma(,) from "host01,host04,host07,"
