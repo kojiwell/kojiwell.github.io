@@ -1,8 +1,10 @@
 ---
-title:  "2023-04-28 Various notes"
+title:  "2023-04-28 Bits and pieces of notes"
 author: Koji Tanaka
 authorURL: http://twitter.com/kojiwell
 ---
+
+
 
 ## Les Davis
 
