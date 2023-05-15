@@ -51,6 +51,11 @@ I thought that the two elements(dance and martial art) are very different and
 combining these two have lead to a unique and innovative creation that naturally
 gets people together.
 
+## FRC
+
+The term "FRC" in freediving stands for "functional residual capacity," which 
+refers to the volume of air that remains in the lungs after a normal exhalation.
+
 ## python
 
 Python's `enumerate()` object is returned in a key-value pair format. The key is 
