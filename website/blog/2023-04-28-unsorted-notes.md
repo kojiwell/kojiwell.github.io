@@ -1,5 +1,5 @@
 ---
-title:  "2023-04-28 Bits and pieces of notes"
+title:  "2023-04-28 Bits and pieces here and there"
 author: Koji Tanaka
 authorURL: http://twitter.com/kojiwell
 ---
