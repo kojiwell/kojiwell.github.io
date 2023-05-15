@@ -1,0 +1,151 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>2023-05-13 Bits and pieces here and there · kojiwell</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Sorites Paradox"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="2023-05-13 Bits and pieces here and there · kojiwell"/><meta property="og:type" content="website"/><meta property="og:url" content="https://kojiwell.github.io/blog/2023/05/13/bits-and-pieces"/><meta property="og:description" content="## Sorites Paradox"/><meta property="og:image" content="https://kojiwell.github.io/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://kojiwell.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://kojiwell.github.io/blog/atom.xml" title="kojiwell Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://kojiwell.github.io/blog/feed.xml" title="kojiwell Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/campfire.svg" alt="kojiwell"/><h2 class="headerTitleWithLogo">kojiwell</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/bash" target="_self">Notes</a></li><li class="siteNavGroupActive"><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Recent Posts</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Recent Posts</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/blog/2023/05/13/bits-and-pieces">2023-05-13 Bits and pieces here and there</a></li><li class="navListItem"><a class="navItem" href="/blog/2023/04/28/unsorted-notes">2023-04-28 Bits and pieces here and there</a></li><li class="navListItem"><a class="navItem" href="/blog/2018/02/27/lustre-on-centos72">Install Lustre on Multiple CentOS 7 Machines</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer postContainer blogContainer"><div class="wrapper"><div class="lonePost"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2023/05/13/bits-and-pieces">2023-05-13 Bits and pieces here and there</a></h1><p class="post-meta">May 13, 2023</p><div class="authorBlock"><p class="post-authorName"><a href="http://twitter.com/kojiwell" target="_blank" rel="noreferrer noopener">Koji Tanaka</a></p></div></header><div><span><h2><a class="anchor" aria-hidden="true" id="sorites-paradox"></a><a href="#sorites-paradox" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sorites Paradox</h2>
+<p>The word &quot;supercomputer&quot; is vague, like a heap of sand in Sorites Paradox.</p>
+<p>A couple of hardware failure is not a big deal. A supercomputer is still a supercomputer.
+And, even if one-third of compute nodes were shut down because of the escalating energy cost,
+it would still be a supercomputer. What about losing half of the capacity?
+Where is the borderline between a supercomputer and a non-supercomputer?</p>
+<p>Wikipedia: <a href="https://en.wikipedia.org/wiki/Sorites_paradox">Sorites Paradox</a></p>
+<h2><a class="anchor" aria-hidden="true" id="kanizsa-triangle"></a><a href="#kanizsa-triangle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kanizsa triangle</h2>
+<p>Sometimes, what we see or perceive in life is not actually what is there.</p>
+<p>The Kanizsa trianble is a classic optical illusion that consists of three
+pac-man-like shapes arranged in a triangle. Even though there isn't a triangle,
+our brain thinks there is.</p>
+<p>Wikipedia: <a href="https://en.wikipedia.org/wiki/Illusory_contours">Illusory contours</a></p>
+<h2><a class="anchor" aria-hidden="true" id="nelson-molina"></a><a href="#nelson-molina" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Nelson Molina</h2>
+<p>Finding joy in day-to-day tasks would be more important than the technical skills on the resume.
+I found an interesting story about Nelson Molina, who worked as a sanitation worker for over
+30 years in New York City.</p>
+<p><em>&quot;<a href="https://money.cnn.com/2017/07/06/news/economy/new-york-city-trash-museum-nelson-molina/index.html">Nelson Molina spent 34 years as a garbage man in New York City</a>.
+He salvaged over 50,000 items from the garbage and put them
+on display in what he calls a &quot;secret museum&quot; in Manhattan.
+He hopes the city will turn it into a real museum soon.&quot; -- CNN</em></p>
+<p>Also, this YouTube video &quot;<a href="https://youtu.be/NO4ZQbsZFK8">Treasures in the Trash</a>&quot;
+from the <a href="https://www.60secdocs.com/">60 Second Docs</a> is wonderful.</p>
+<h2><a class="anchor" aria-hidden="true" id="capoeira"></a><a href="#capoeira" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Capoeira</h2>
+<p>A few days ago, on a weekend, I was hanging out with my two kids around
+the village office, and there was a small group of people practicing Capoeira
+on the stage in the courtyard. They were playing unique instruments, singing,
+and dancing, but at the same time, simulating fights, which was eye-grabbing.</p>
+<p>There was no audience except us(my kids and me), and we enjoyed watching it.
+I thought that the two elements(dance and martial art) are very different and
+combining these two have lead to a unique and innovative creation that naturally
+gets people together.</p>
+<h2><a class="anchor" aria-hidden="true" id="python"></a><a href="#python" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>python</h2>
+<p>Python's <code>enumerate()</code> object is returned in a key-value pair format. The key is
+the corresponding index of each item and the value is the items.</p>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>my_array = [ <span class="hljs-string">'dog'</span>, <span class="hljs-string">'cat'</span>, <span class="hljs-string">'fox'</span>]
+<span class="hljs-meta">&gt;&gt;&gt; </span>print(list(enumerate(my_array)))
+[(<span class="hljs-number">0</span>, <span class="hljs-string">'dog'</span>), (<span class="hljs-number">1</span>, <span class="hljs-string">'cat'</span>), (<span class="hljs-number">2</span>, <span class="hljs-string">'fox'</span>)]
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> n, item <span class="hljs-keyword">in</span> enumerate(my_array):
+<span class="hljs-meta">... </span>    print(<span class="hljs-string">f'<span class="hljs-subst">{str(n)}</span> : <span class="hljs-subst">{item}</span>'</span>)
+...
+<span class="hljs-number">0</span> : dog
+<span class="hljs-number">1</span> : cat
+<span class="hljs-number">2</span> : fox
+</code></pre>
+<p>A binary number starts with <code>0b</code> and a hex number starts with <code>0x</code>.</p>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>bin(<span class="hljs-number">28</span>) <span class="hljs-comment"># decimal to binary</span>
+<span class="hljs-string">'0b11100'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>hex(<span class="hljs-number">28</span>) <span class="hljs-comment"># decimal to hex(hexadecimal)</span>
+<span class="hljs-string">'0x1c'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>int(<span class="hljs-string">'0b11100'</span>, <span class="hljs-number">2</span>) <span class="hljs-comment"># binary to decimal</span>
+<span class="hljs-number">28</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>int(<span class="hljs-string">'0x1c'</span>, <span class="hljs-number">16</span>) <span class="hljs-comment"># hex to decimal</span>
+<span class="hljs-number">28</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="tar"></a><a href="#tar" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>tar</h2>
+<p>Extract a specific file from a tar.gz file</p>
+<pre><code class="hljs css language-bash"><span class="hljs-comment"># Print the list of the files in the tar.gz and find the path of the file</span>
+tar ztf data_a.tar.gz
+
+<span class="hljs-comment"># Extract the file</span>
+tar zxvf data_a.tar.gz data_a/datetime/data-1/data-1<span class="hljs-_">-a</span>-b.tif
+
+<span class="hljs-comment"># Extract the directory</span>
+tar zxvf data_a.tar.gz data_a/datetime/data-1
+
+<span class="hljs-comment"># -x: instructs tar to extract files.</span>
+<span class="hljs-comment"># -f: specifies filename / tarball name.</span>
+<span class="hljs-comment"># -v: Verbose (show progress while extracting files).</span>
+<span class="hljs-comment"># -z: filter archive through gzip, use to decompress .gz files.</span>
+<span class="hljs-comment"># -t: List the contents of an archive</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="awk"></a><a href="#awk" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>awk</h2>
+<p>Print a matched line with a specific delimiter (e.g. <code>,</code>)</p>
+<pre><code class="hljs css language-bash"><span class="hljs-comment"># Check out the matched line</span>
+grep comp01-mg /etc/hosts
+192.168.1.101    comp01-mg.mydomain.com    comp01-mg
+
+<span class="hljs-comment"># Print the line as "ip,hostname,hostname.domain"</span>
+awk <span class="hljs-string">'/comp01-mg/ {print $1,$3,$2}'</span> OFS=<span class="hljs-string">","</span> /etc/hosts
+192.168.1.101,comp01-mg,comp01-mg.mydomain.com
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="idrac"></a><a href="#idrac" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>iDRAC</h2>
+<p><em>&quot;Access Error: 400 -- Bad Request.&quot;</em></p>
+<p>Sometimes, iDRAC webui beomes inaccessible with FQDN, showing this error message,
+&quot;Access Error: 400 -- Bad Request.&quot; It seems like a bug in a particular iDRAC version.
+Here's the workaround, which lets you manually set its FQDN.</p>
+<pre><code class="hljs"><span class="hljs-attribute">racadm</span> set idrac.webserver.ManualDNSentry \
+  <span class="hljs-number">192.168.20.30</span>,hostname-mg,hostname-mg.mydomain.com
+
+<span class="hljs-comment"># using the awk tip</span>
+racadm set idrac.webserver.ManualDNSentry \
+  $(awk <span class="hljs-string">'/comp01-mg/ {print <span class="hljs-variable">$1</span>,<span class="hljs-variable">$3</span>,<span class="hljs-variable">$2</span>}'</span> OFS=<span class="hljs-string">","</span> /etc/hosts)
+</code></pre>
+</span></div></div><div class="blogSocialSection"></div></div><div class="blog-recent"><a class="button" href="/blog/">Recent Posts</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#sorites-paradox">Sorites Paradox</a></li><li><a href="#kanizsa-triangle">Kanizsa triangle</a></li><li><a href="#nelson-molina">Nelson Molina</a></li><li><a href="#capoeira">Capoeira</a></li><li><a href="#python">python</a></li><li><a href="#tar">tar</a></li><li><a href="#awk">awk</a></li><li><a href="#idrac">iDRAC</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="kojiwell" width="66" height="58"/></a><div><h5>Notes</h5><a href="/docs/git.html">Git</a><a href="/docs/vim.html">Vim</a><a href="/docs/tmux.html">Tmux</a><a href="/docs/intro.html">and more...</a></div><div><h5>Social Media</h5><a href="https://twitter.com/kojiwell" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://qiita.com/kojiwell" target="_blank" rel="noreferrer noopener">Qiita (Japanese)</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/kojiwell" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright">Copyright © Koji Tanaka</section></footer></div></body></html>
