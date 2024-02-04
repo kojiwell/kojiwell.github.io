@@ -7,7 +7,9 @@ sidebar_label: Linux
 Linux is a Unix-based operating system. It's free and open source, and the most widely-used operating system.
 Linux inherits the Unix philosophy(minimalist, modular software development) - "do one thing do it well."
 
-## find
+## File and directory operation
+
+### find
 
 Find files owned by user `foo` and change the owner to `bar:group1`
 
@@ -27,7 +29,7 @@ find $HOME -maxdepth 1 -type d |tail -n +2 |cut -d '/' -f 3-4
 * `tail -n +2`: List from the 2nd line. The first line is the current directory, which is the $HOME itself
 * `cut -d '/' -f 3-4`: Cut the line by '\', and print from 3rd to 4th
 
-## sed
+### sed
 
 Replace `foo` with `bar` in a text file
 
@@ -75,7 +77,7 @@ Delete the line that matches the key word
 seq -f line-'%02g' 10|sed -e '/03/d' -e '/06/d'
 ```
 
-## rsync
+### rsync
 
 Options I often use
 
@@ -114,7 +116,24 @@ rsync -a --link-dest=$PWD/src.YYYY-MM-DD src/ src.$(date +%Y-%m-%d)
 rsync -av --exclude='/*/' src/ dest
 ```
 
-## script - make typescript of terminal session
+## Networking
+
+## ip
+
+``` bash
+# Show list
+ip link list
+
+# Link up
+ip link set dev <interface> up
+
+# Link down
+ip link set dev <interface> down
+```
+
+## Other things
+
+### script - make typescript of terminal session
 
 ```
 # Start the script
