@@ -21,7 +21,7 @@ Wikipedia: [Sorites Paradox](https://en.wikipedia.org/wiki/Sorites_paradox)
 
 Sometimes, what we see or perceive in life is not actually what is there.
 
-The Kanizsa trianble is a classic optical illusion that consists of three 
+The Kanizsa triangle is a classic optical illusion that consists of three 
 pac-man-like shapes arranged in a triangle. Even though there isn't a triangle, 
 our brain thinks there is.
 
