@@ -1,0 +1,9 @@
+{
+  "label": "Special",
+  "position": 2,
+  "link": {
+    "title": "Special Tools",
+    "type": "generated-index",
+    "description": "Notes about my essential tools"
+  }
+}

@@ -34,6 +34,16 @@ const config = {
     locales: ['en'],
   },
 
+  // Add @easyops-cn/docusaurus-search-local
+  plugins: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        indexDocs: true,
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',
@@ -79,11 +89,6 @@ const config = {
             label: 'Notes',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/kojiwell',
-            label: 'GitHub',
-            position: 'right',
-          },
         ],
       },
       footer: {
@@ -94,7 +99,7 @@ const config = {
             items: [
               {
                 label: 'Notes',
-                to: '/docs/intro',
+                to: '/docs/notes',
               },
             ],
           },
@@ -102,16 +107,12 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'X (Twitter)',
+                href: 'https://twitter.com/kojiwell',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: 'Qiita (Japanese)',
+                href: 'https://qiita.com/kojiwell',
               },
             ],
           },
@@ -124,12 +125,12 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/kojiwell',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Koji Tanaka. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

@@ -3,6 +3,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
@@ -18,17 +19,18 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
+            className="button button--secondary"
             to="/docs/intro">
             Notes
           </Link>
             &nbsp;
           <Link
-            className="button button--secondary button--lg"
+            className="button button--secondary"
             to="/blog">
             Blog
           </Link>
         </div>
+        <img src={useBaseUrl('/img/kojiwell_front.svg')} />
       </div>
     </header>
   );
