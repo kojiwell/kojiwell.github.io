@@ -26,8 +26,8 @@ Publish the site as user/organization page `https://username.github.io`.
 
 ``` sh
 cd website
-GIT_USER=<username> CURRENT_BRANCH=<branch> USE_SSH=true yarn run publish-gh-pages
+GIT_USER=<username> CURRENT_BRANCH=<branch> USE_SSH=true DEPLOYMENT_BRANCH=<branch> yarn run deploy
 
 # e.g. My site
-GIT_USER=kojiwell CURRENT_BRANCH=docusaurus USE_SSH=true yarn run publish-gh-pages
+GIT_USER=kojiwell CURRENT_BRANCH=docusaurus_v3 USE_SSH=true DEPLOYMENT_BRANCH=master yarn run deploy
 ```

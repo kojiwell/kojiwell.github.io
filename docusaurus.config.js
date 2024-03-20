@@ -22,6 +22,7 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'kojiwell', // Usually your GitHub org/user name.
   projectName: 'kojiwell.github.io', // Usually your repo name.
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -130,7 +131,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Koji Tanaka. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Koji Tanaka`,
       },
       prism: {
         theme: prismThemes.github,
