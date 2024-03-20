@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[9012],{1272:e=>{e.exports=JSON.parse('{"title":"Optional Tools","slug":"/category/optional","permalink":"/docs/category/optional","navigation":{"previous":{"title":"Vim","permalink":"/docs/essential/vim"},"next":{"title":"Docusaurus","permalink":"/docs/optional/docusaurus"}}}')}}]);
