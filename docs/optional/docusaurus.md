@@ -4,6 +4,19 @@ title: Docusaurus
 sidebar_label: Docusaurus
 ---
 
+## Scaffold your website
+
+```
+npx create-docusaurus@latest website classic
+```
+
+## Run the dev server
+
+```
+cd website
+npm run start
+```
+
 ## Files and directories
 
 * `website/siteConfig.js` -- Configuration
@@ -20,7 +33,7 @@ sidebar_label: Docusaurus
 ---
 ```
 
-## Publishing
+## Publish your website to Github
 
 Publish the site as user/organization page `https://username.github.io`.
 
