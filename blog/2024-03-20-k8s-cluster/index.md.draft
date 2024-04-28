@@ -1,0 +1,10 @@
+---
+slug: 2024-03-20-k8s-cluster
+title: Kubernetes cluster on Ubuntu 22.04 LTS for March 2024
+authors: kojiwell
+tags: [k8s, kubernetes]
+draft: true
+unlist: true
+---
+
+As K8s (Kubernetes) has rapidly evelved, its installation process has also been changed, unavoidably.. For such a very active Open Source project, it is hard to find a perfect tutorial that works for everyone all the time.

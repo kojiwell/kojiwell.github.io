@@ -29,6 +29,7 @@ function HomepageHeader() {
             to="/blog">
             Blog
           </Link>
+          &nbsp;
         </div>
         <img src={useBaseUrl('/img/kojiwell_front.svg')} />
       </div>
