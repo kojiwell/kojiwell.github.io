@@ -45,3 +45,22 @@ bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 ```
 
+### Write a file in a script
+
+Create a new file / Overwrite an existing file
+
+```
+tee /tmp/test.txt <<EOF
+This is the 1st line
+This is the 2nd line
+EOF
+```
+
+Append new lines
+
+```
+tee -a /tmp/test.txt <<EOF
+This is the 3rd line
+This is the 4th line
+EOF
+```
