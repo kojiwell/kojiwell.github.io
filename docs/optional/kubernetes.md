@@ -150,3 +150,40 @@ kubectl exec --stdin --tty nginx -- bash
 # 4. Delete the container
 kubectl delete pod nginx
 ```
+
+## Tips
+
+### Mount a local dir
+
+``` yaml title="deployment.yml"
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shell-demo
+spec:
+  volumes:
+  - name: shared-data
+    hostPath:
+      path: /path/to/the/html
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: shared-data
+      mountPath: /usr/share/nginx/html
+    ports:
+    - containerPort: 80
+```
+
+```
+tee /path/to/the/html/index.html <<EOF
+Hello World!
+EOF
+```
+
+```
+kubectl apply -f deployment.yml
+kubectl exec --stdin --tty mount-demo -- df
+kubectl exec --stdin --tty mount-demo -- cat /usr/share/nginx/html/index.html
+kubectl delete -f deployment.yml
+```
