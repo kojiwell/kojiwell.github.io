@@ -24,6 +24,12 @@ Set an email address that will be associated with each history maker
 git config --global user.email "[valid email]"
 ```
 
+Change the default branch name from "master" to "main"
+
+``` sh
+git config --global init.defaultBranch main
+```
+
 **NOTE:** The `--global` option means that the values will be shared among your local git repositories,
 and it is stored in your `~/.gitconfig` file.
 
