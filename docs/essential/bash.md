@@ -64,3 +64,20 @@ This is the 3rd line
 This is the 4th line
 EOF
 ```
+
+### Array in Bash script
+
+``` bash title="test_array.sh"
+myArray=("cat" "dog" "mouse" "frog")
+
+echo ${myArray[@]}
+echo ${!myArray[@]}
+
+for str in ${myArray[@]}; do
+  echo $str
+done
+
+for i in ${!myArray[@]}; do
+  echo "element $i is ${myArray[$i]}"
+done
+```
