@@ -96,12 +96,11 @@ git status
 
 Stage a file or directory for your next commit
 
-``` sh
+``` shell
 git add [file/directory]
 
 # Patch mode
 git -p add [file/directory]
-
 ```
 
 Unstage a file or directory while retaining the changes
@@ -259,14 +258,47 @@ git config --global core.editor "vim"
 
 ## Tips
 
+### Compare two branches (e.g. main and dev)
+
+``` sh
+git diff main...dev
+```
+
 ### Tell git which ssh private key to use
 
-```
+``` shell
 # Set it permanently in the .git/config
-git config core.sshCommand "ssh -i ~/.ssh/another_id_rsa -F /dev/null"
+git config core.sshCommand "ssh -i ~/.ssh/another_key"
 
 # Just once
-git -c core.sshCommand="ssh -i ~/.ssh/another_id_rsa -F /dev/null" clone ...
+git -c core.sshCommand="ssh -i ~/.ssh/another_key" clone ...
+
+# Environment variable
+export GIT_SSH_COMMAND="ssh -i ~/.ssh/another_key"
+```
+
+### Create a new empty branch
+
+``` shell
+git switch --orpha <new branch>
+
+# Create, commit, and push
+git switch --orpha <new branch>
+git commit --allow-empty -m "Initial commit on orphan branch"
+git push -u origin <new branch>
+```
+
+### Create a new branch in another worktree
+
+``` shell
+git worktree add <path> <branch>
+```
+
+Create a throwaway worktree. You can make some experimental changes or do testing without 
+disturbing existing development.
+
+```
+git worktree add -d <path>
 ```
 
 ### Simple way to track config files by a bare git repo

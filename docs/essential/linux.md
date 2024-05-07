@@ -161,10 +161,30 @@ less log/install_ofed.txt
 
 ## Tips
 
-Show count down in sleep command
+### Show count down in sleep command
 
 ``` sh
 # 60 seconds
 for i in `seq 60 -1 1`; do echo -ne "\r$i "; sleep 1; done
 ```
+
+### Extract a specific file
+
+```
+# Print the list of the files in the tar.gz and find the path of the file
+tar ztf data_a.tar.gz
+
+# Extract the file
+tar zxvf data_a.tar.gz data_a/datetime/data-1/data-1-a-b.tif
+
+# Extract the directory
+tar zxvf data_a.tar.gz data_a/datetime/data-1
+
+```
+
+- `-x` : instructs tar to extract files.
+- `-f` : specifies filename / tarball name.
+- `-v` : Verbose (show progress while extracting files).
+- `-z` : filter archive through gzip, use to decompress .gz files.
+- `-t` : List the contents of an archive
 

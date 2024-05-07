@@ -1,6 +1,6 @@
 ---
 id: kubernetes
-title: Kubernetes - extended Bourne shell
+title: Kubernetes - open-source container orchestration system
 sidebar_label: Kubernetes
 ---
 
