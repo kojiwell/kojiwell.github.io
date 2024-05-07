@@ -35,6 +35,25 @@ Bash is the default shell of most Linux distros.
 
 ## Tips
 
+### Install Bash-completion
+
+Bash-completion helps you type commands faster and easiler.
+
+```
+# Ubuntu
+sudo apt install bash-completion
+
+# Rocky
+sudo dnf install bash-completion
+```
+
+Press [TAB] when you type commands, for example:
+
+``` shell
+sudo git [TAB]
+sudo systemctl [TAB]
+```
+
 ### History search with arrow keys
 
 You can enable arrow keys -- [Up] for backward and [Down] for forward -- 
