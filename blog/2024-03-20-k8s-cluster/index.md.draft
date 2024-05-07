@@ -7,4 +7,20 @@ draft: true
 unlist: true
 ---
 
+import TOCInline from '@theme/TOCInline';
+
+<TOCInline toc={toc} />
+
+## Introduction
+
 As K8s (Kubernetes) has rapidly evelved, its installation process has also been changed, unavoidably.. For such a very active Open Source project, it is hard to find a perfect tutorial that works for everyone all the time.
+
+## Installation
+
+### ALL : Update and upgrade Ubuntu
+
+``` bash
+sudo apt update
+sudo apt upgrade
+```
+
