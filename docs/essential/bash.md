@@ -69,7 +69,16 @@ bind '"\e[B": history-search-forward'
 Create a new file / Overwrite an existing file
 
 ```
+## tee
 tee /tmp/test.txt <<EOF
+This is the 1st line
+This is the 2nd line
+EOF
+```
+
+```
+# cat
+cat <<EOF> /tmp/test.txt
 This is the 1st line
 This is the 2nd line
 EOF
@@ -78,11 +87,22 @@ EOF
 Append new lines
 
 ```
+# tee
 tee -a /tmp/test.txt <<EOF
 This is the 3rd line
 This is the 4th line
 EOF
 ```
+
+```
+# cat
+cat <<EOF>> /tmp/test.txt
+This is the 3rd line
+This is the 4th line
+EOF
+```
+
+I prefer using tee because tee also prints these lines to stdout.
 
 ### Array in Bash script
 
