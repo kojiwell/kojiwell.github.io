@@ -8,30 +8,30 @@ Bash is the default shell of most Linux distros.
 
 ## Navigation
 
-- `Ctrl` + `a` -- Go to the beginning of the line
-- `Ctrl` + `e` -- Go to the end of the line
-- `Alt` + `f` -- Move cursor to the next word
-- `Alt` + `b` -- Move cursor to the previous word
-- `Ctrl` + `x`, `x` -- Move cursor between the current position and the begining of the line
+- `Ctrl` + `a` &rarr; Go to the beginning of the line
+- `Ctrl` + `e` &rarr; Go to the end of the line
+- `Alt` + `f` &rarr; Move cursor to the next word
+- `Alt` + `b` &rarr; Move cursor to the previous word
+- `Ctrl` + `x`, `x` &rarr; Move cursor between the current position and the begining of the line
 
 ## Editing
 
-- `Ctrl` + `k` -- Cut line after cursor and copy it to the clipboard
-- `Ctrl` + `u` -- Cut line before cursor and copy it to the clipboard
-- `Ctrl` + `y` -- Paste what you have on the clipbaord
-- `Ctrl` + `_` -- Undo your last key press
+- `Ctrl` + `k` &rarr; Cut line after cursor and copy it to the clipboard
+- `Ctrl` + `u` &rarr; Cut line before cursor and copy it to the clipboard
+- `Ctrl` + `y` &rarr; Paste what you have on the clipbaord
+- `Ctrl` + `_` &rarr; Undo your last key press
 
 ## Processing
 
-- `Ctrl` + `c` -- Kill the currently running command
-- `Ctrl` + `d` -- Exit the shell
-- `Ctrl` + `l` -- Clear the screen (Same as the `clear` command)
+- `Ctrl` + `c` &rarr; Kill the currently running command
+- `Ctrl` + `d` &rarr; Exit the shell
+- `Ctrl` + `l` &rarr; Clear the screen (Same as the `clear` command)
 
 ## History
 
-- `Alt` + `p` -- Search backward through the history starting at the current line
-- `Alt` + `n` -- Search forward through the history starting at the current line
-- `Ctrl` + `r` -- Open the history search
+- `Alt` + `p` &rarr; Search backward through the history starting at the current line
+- `Alt` + `n` &rarr; Search forward through the history starting at the current line
+- `Ctrl` + `r` &rarr; Open the history search
 
 ## Tips
 
@@ -102,7 +102,7 @@ This is the 4th line
 EOF
 ```
 
-I prefer using tee because tee also prints these lines to stdout.
+I prefer using `tee` because `tee` also prints these lines to stdout.
 
 ### Array in Bash script
 
@@ -119,4 +119,29 @@ done
 for i in ${!myArray[@]}; do
   echo "element $i is ${myArray[$i]}"
 done
+```
+
+### Make your bash script safer
+
+```
+#!/bin/bash
+
+set -euxo pipefail
+
+```
+
+- `-e` &rarr; Exit immediately if a command exits with a non-zero status.
+- `-u` &rarr; Treat unset variables as an error when substituting.
+- `-x` &rarr; Print commands and their arguments as they are executed.
+- `-o pipfail` &rarr; The return value of a pipeline is the status of the last 
+  command to exit with a non-zero status, or zero if no command exited 
+  with a non-zero status.
+
+### Get the directory path where a script is located
+
+```
+#!/bin/bash
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+echo "Script directory: $SCRIPT_DIR"
 ```
