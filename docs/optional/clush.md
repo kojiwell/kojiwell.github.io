@@ -68,6 +68,20 @@ group1: node_a[01-10],node_b[01-05]
 group2: node_c[01-05],node_d[01-03]
 ```
 
+## Commands
+
+### Run a command on multiple nodes
+
+```
+clush -w node[01-32,64-96] uptime
+```
+
+### Copy a file to multiple nodes
+
+```
+clush -w node[01-96] -c /path/to/file
+```
+
 ## Tips
 
 ### Set a different config directory.
