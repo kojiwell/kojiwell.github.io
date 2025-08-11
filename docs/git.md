@@ -298,6 +298,22 @@ git commit --allow-empty -m "empty commit"
 git push origin [empty-branch]
 ```
 
+### Delete and recreate a tag
+
+``` shell
+# delete the tag locally (e.g. v0.2.28)
+git tag -d v0.2.28
+
+# delete the tag on the remote
+git push --delete origin v0.2.28
+
+# recreate the tag
+git tag v0.2.28
+
+# push the new tag
+git push origin v0.2.28
+```
+
 ### The seven rules of a great Git commit message
 
 1. Separate subject from body with a blank line
