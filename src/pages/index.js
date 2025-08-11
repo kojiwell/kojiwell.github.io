@@ -34,7 +34,12 @@ function HomepageHeader() {
           </Link>
           &nbsp;
         </div>
-        <img src={useBaseUrl(isDarkMode ? '/img/kojiwell_front_dark.svg' : '/img/kojiwell_front.svg')} alt="Kojiwell front graphic" />
+        <div className={styles.intro}>
+          <p>
+          Hi, I'm Koji Tanaka (@kojiwell). I use open source software to live a peaceful life, and I love the culture around it. I guess I also want to be part of it. I build high-performance computing systems, sometimes breaking them down and rebuilding them from scratch. I also help users get the most out of those systems.
+          When I'm not working or sleeping, you'll probably find me with my family or friends, reading, running, or freediving. And when I'm not doing any of those, I'm usually here, writing bits and pieces. This is where I collect the things I've learned along the way as a system guy.
+          </p>
+        </div>
       </div>
     </header>
   );

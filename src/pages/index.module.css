@@ -12,6 +12,10 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  /* Make total box height equal to viewport height, including padding */
+  box-sizing: border-box;
+  height: 100vh;
+  height: 100dvh;
 }
 
 @media screen and (max-width: 996px) {
@@ -29,4 +33,15 @@
 /* Dark mode background override */
 [data-theme='dark'] .heroBanner {
   background-image: url('/img/background/bg02.jpg');
+}
+
+.intro {
+  padding: calc(3rem + 2vh) 0;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.intro p {
+  max-width: 55ch;
+  margin: 0 auto;
 }
