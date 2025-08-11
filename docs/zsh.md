@@ -18,12 +18,58 @@ Use emacs keybindings
 bindkey -e
 ```
 
-Bind `Up` and `Down` keys to history search
+## Setting up Incremental History Search with Completion
 
+This configuration enables smart history search in Zsh, where pressing the up/down arrow keys will search through your command history based on what you've already typed. This is particularly useful when you want to find and reuse a previous command that starts with specific text.
+
+### Setup Steps
+
+1. Open your Zsh configuration file in your preferred editor:
+
+```bash
+# Using nano (beginner-friendly)
+nano ~/.zshrc
+
+# Or using vim
+vim ~/.zshrc
+
+# Or using VS Code
+code ~/.zshrc
 ```
-bindkey "^[[5~" history-beginning-search-backward
-bindkey "^[[6~" history-beginning-search-forward
+
+2. Add the following configuration to your `~/.zshrc`:
+
+```bash
+# Load the required Zsh modules for history search
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
+
+# Register the functions as Zsh line editor widgets
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+# Bind the up and down arrow keys to the search functions
+bindkey "^[[A" up-line-or-beginning-search    # Up arrow
+bindkey "^[[B" down-line-or-beginning-search  # Down arrow
 ```
+
+### How it works
+
+- When you type a command and press the up arrow (↑), Zsh will search through your history for commands that begin with what you've already typed
+- Pressing the down arrow (↓) will search forward through the history
+- This is more efficient than the default behavior where arrow keys simply cycle through all commands regardless of what you've typed
+- The search is case-sensitive and matches from the beginning of the command
+
+### Testing the Configuration
+
+1. Save the file and reload your Zsh configuration:
+```bash
+source ~/.zshrc
+```
+
+2. Try it out:
+   - Type `git` and press the up arrow - it will only show previous commands that start with "git"
+   - Type `ls` and press the up arrow - it will only show previous commands that start with "ls"
 
 Configure how history should be managed
 
