@@ -6,10 +6,13 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 import Heading from '@theme/Heading';
+import {useColorMode} from '@docusaurus/theme-common';
 import styles from './index.module.css';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
+  const {colorMode} = useColorMode();
+  const isDarkMode = colorMode === 'dark';
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
@@ -31,7 +34,7 @@ function HomepageHeader() {
           </Link>
           &nbsp;
         </div>
-        <img src={useBaseUrl('/img/kojiwell_front.svg')} />
+        <img src={useBaseUrl(isDarkMode ? '/img/kojiwell_front_dark.svg' : '/img/kojiwell_front.svg')} alt="Kojiwell front graphic" />
       </div>
     </header>
   );
