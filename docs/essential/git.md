@@ -4,21 +4,19 @@ title: Git - distributed version control system
 sidebar_label: Git
 ---
 
-Git allows a group of software developers to manage changes of sourse code over time. 
-It's the most popular version control system, and when you're involved in a software 
-development, you will most-likely use Git with other people. 
+Git enables developers to collaboratively manage and track changes to source code. As the most widely used version control system, Git is essential in most software projects.
 
 ## Basics
 
 ### General setup
 
-Set a name that is identified for credit when review version history
+Set the name used in your commits
 
 ``` sh
 git config --global user.name "[Firstname Lastname]"
 ```
 
-Set an email address that will be associated with each history maker
+Set the email address associated with your commits
 
 ``` sh
 git config --global user.email "[valid email]"
@@ -30,11 +28,10 @@ Change the default branch name from "master" to "main"
 git config --global init.defaultBranch main
 ```
 
-**NOTE:** The `--global` option means that the values will be shared among your local git repositories,
-and it is stored in your `~/.gitconfig` file.
+**NOTE:** The `--global` option applies to all local Git repositories and is stored in your `~/.gitconfig` file.
 
 
-You can also locally set a different email(e.g. work email) in a particular repo like this:
+You can also set a different email locally (e.g., a work email) for a particular repository:
 
 ``` sh
 # Change directory to the repo
@@ -49,7 +46,7 @@ git config user.email "[work email]"
 cat .git/config
 ```
 
-Set the editor for Git
+Set your preferred editor for Git
 
 ``` sh
 git config --global core.editor "vim"
@@ -86,7 +83,7 @@ git clone [user]@[server]:[path to a bare repository]
 git clone [path to a bare repository]
 ```
 
-### Stage and snapsot
+### Stage and snapshot
 
 Show modified files - both staged and unstaged
 
@@ -109,13 +106,13 @@ Unstage a file or directory while retaining the changes
 git reset [file/directory]
 ```
 
-Show differences of what have been changed but not staged
+Show changes that are not staged
 
 ``` sh
 git diff
 ```
 
-Show differences of what have been staged but not commited
+Show changes that are staged but not committed
 
 ``` sh
 git diff --staged
@@ -129,7 +126,7 @@ git commit -m "[descriptive message]"
 
 ### Branch and merge
 
-List branches. The current branch shows with a *
+List branches. The current branch is marked with a *
 
 ``` sh
 git branch
@@ -141,7 +138,7 @@ Create a new branch at the current commit
 git branch [branch-name]
 ```
 
-Swtich to another branch and check it out into your working directory
+Switch to another branch and check it out into your working directory
 
 ``` sh
 git checkout [branch]
@@ -173,7 +170,7 @@ Show commits on branchA that are not on branchB
 git log branchB..branchA
 ```
 
-Show the commits that changed file
+Show commits that changed a file
 
 ``` sh
 git log --follow [file]
@@ -191,7 +188,7 @@ Compare a particular file in two branches -- main and dev
 git diff main..dev -- path/to/file
 ```
 
-### Removal and file path change
+### Removal and file path changes
 
 Delete the file from project and stage the removal for commit
 
@@ -205,9 +202,7 @@ Untrack the file from project and stage the removal for commit.
 git rm --cached [file]
 ```
 
-**NOTE:** With that `--cached` option, the file won't be deleted, which will show
-up as an unstaged file in the output of `git status`. If you want it to stay there 
-untracked, add it in the `.gitignore` file.
+**NOTE:** With the `--cached` option, the file isn't deleted; it will show up as an unstaged file in the output of `git status`. To keep it untracked, add it to the `.gitignore` file.
 
 Change an existing file path and stage that move
 
@@ -223,8 +218,8 @@ git log --stat -M
 
 ### Ignoring files/directories
 
-Create a `.gitignore` file in your repository, and list the files and directories
-that you want to ignore. Here're examples:
+Create a `.gitignore` file in your repository and list the files and directories
+that you want to ignore. Here are examples:
 
 ``` text
 logs/
@@ -232,15 +227,14 @@ logs/
 pattern*/
 ```
 
-When you want to set the list of ignored files/dirs globally, create `$HOME/.config/git/ignore`,
-and list the ignored files in the file. You can find the examples of global ignores at 
-[github / gitignore](https://github.com/github/gitignore).
+To configure global ignores, create `$HOME/.config/git/ignore` and list ignored files there. See
+[github / gitignore](https://github.com/github/gitignore) for examples.
 
 ## Optional
 
 ### git config
 
-Create a shortcut for a git command. E.g. `git glog` as `git log --graph --oneline`
+Create a shortcut for a Git command. For example, `git glog` as `git log --graph --oneline`:
 
 ``` sh
 git config alias.glog "log --graph --oneline"
@@ -280,10 +274,10 @@ export GIT_SSH_COMMAND="ssh -i ~/.ssh/another_key"
 ### Create a new empty branch
 
 ``` shell
-git switch --orpha <new branch>
+git switch --orphan <new branch>
 
 # Create, commit, and push
-git switch --orpha <new branch>
+git switch --orphan <new branch>
 git commit --allow-empty -m "Initial commit on orphan branch"
 git push -u origin <new branch>
 ```
@@ -311,7 +305,7 @@ alias myfiles='/usr/bin/git --git-dir=$HOME/.myfiles/ --work-tree=$HOME'
 myfiles config --local status.showUntrackedFiles no
 ```
 
-And have the following in your `~.bashrc` or `~/.zshrc`:
+Add the following to your `~/.bashrc` or `~/.zshrc`:
 
 ``` sh
 alias myfiles='/usr/bin/git --git-dir=$HOME/.myfiles/ --work-tree=$HOME'
