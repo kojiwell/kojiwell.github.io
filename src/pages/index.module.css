@@ -16,8 +16,8 @@
   box-sizing: border-box;
   height: 100vh;
   /* Use small viewport on mobile Safari as an intermediate fallback */
-  height: 100svh;
-  height: 100dvh;
+  height: 200svh;
+  height: 200dvh;
 }
 
 @media screen and (max-width: 996px) {
