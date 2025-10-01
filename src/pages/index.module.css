@@ -15,12 +15,18 @@
   /* Make total box height equal to viewport height, including padding */
   box-sizing: border-box;
   height: 100vh;
+  /* Use small viewport on mobile Safari as an intermediate fallback */
+  height: 100svh;
   height: 100dvh;
 }
 
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 2rem;
+    /* Extra top padding to account for sticky navbar and safe area */
+    padding-top: calc(2rem + var(--ifm-navbar-height, 3.5rem) + env(safe-area-inset-top));
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
   }
 }
 
